@@ -1,0 +1,2 @@
+from detail_page import start_get_xinlang_detail_page_out
+start_get_xinlang_detail_page_out()

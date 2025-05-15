@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章列表 - 辟谣管理系统</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/spacing.css">
+  <style>
+    /* 针对状态选择器的特定样式 */
+    #status-filter {
+      min-width: 150px;
+      width: auto;
+    }
+    
+    /* 按钮组样式 */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">Truth Guardian</a>
+      <ul class="navbar-menu">
+        <li class="navbar-item">
+          <a href="/debunk/articles" class="navbar-link active">文章列表</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/debunk/articles/create" class="navbar-link">发布文章</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/ai-chat" class="navbar-link">AI辟谣机器人</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/auth/profile" class="navbar-link">个人资料</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#" class="navbar-link" onclick="logout(); return false;">退出登录</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>文章列表</h3>
+        <div class="filter-controls">
+          <select id="status-filter" class="form-control">
+            <option value="all">所有状态</option>
+            <option value="draft">草稿</option>
+            <option value="published">已发布</option>
+            <option value="archived">已归档</option>
+          </select>
+          <input type="text" id="search-input" class="form-control" placeholder="搜索文章标题或标签...">
+          <button id="search-btn" class="btn btn-primary">搜索</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="action-buttons mb-3">
+          <a href="/debunk/articles/create" class="btn btn-success">创建新文章</a>
+          <a href="/ai-chat" class="btn btn-primary">AI辟谣机器人</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>标题</th>
+                <th>作者</th>
+                <th>标签</th>
+                <th>状态</th>
+                <th>发布日期</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="articles-table-body">
+              <tr>
+                <td colspan="7" class="text-center">加载中...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="pagination" id="pagination-container">
+          <button id="prev-page" class="btn btn-secondary">上一页</button>
+          <span id="page-info">第 <span id="current-page">1</span> 页 / 共 <span id="total-pages">1</span> 页</span>
+          <button id="next-page" class="btn btn-secondary">下一页</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 检查登录状态
+      if (!localStorage.getItem('access_token')) {
+        window.location.href = '/auth/login';
+        return;
+      }
+      
+      // 初始化页面参数
+      let currentPage = 1;
+      let totalPages = 1;
+      let searchQuery = '';
+      let statusFilter = 'all';
+      
+      // 加载文章列表
+      loadArticles();
+      
+      // 添加事件监听器
+      document.getElementById('search-btn').addEventListener('click', handleSearch);
+      document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      });
+      document.getElementById('status-filter').addEventListener('change', function() {
+        statusFilter = this.value;
+        currentPage = 1;
+        loadArticles();
+      });
+      document.getElementById('prev-page').addEventListener('click', function() {
+        if (currentPage > 1) {
+          currentPage--;
+          loadArticles();
+        }
+      });
+      document.getElementById('next-page').addEventListener('click', function() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          loadArticles();
+        }
+      });
+      
+      // 搜索处理
+      function handleSearch() {
+        searchQuery = document.getElementById('search-input').value.trim();
+        currentPage = 1;
+        loadArticles();
+      }
+      
+      // 加载文章列表
+      function loadArticles() {
+        const tableBody = document.getElementById('articles-table-body');
+        tableBody.innerHTML = '<tr><td colspan="7" class="text-center">加载中...</td></tr>';
+        
+        // 构建查询参数
+        let url = `/api/debunk/articles?page=${currentPage}&per_page=10`;
+        
+        if (searchQuery) {
+          url += `&search=${encodeURIComponent(searchQuery)}`;
+        }
+        
+        if (statusFilter !== 'all') {
+          url += `&status=${statusFilter}`;
+        }
+        
+        fetch(url, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('请求失败');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // 更新分页信息
+          totalPages = Math.max(1, Math.ceil(data.total / 10));
+          document.getElementById('current-page').textContent = currentPage;
+          document.getElementById('total-pages').textContent = totalPages;
+          
+          // 启用/禁用分页按钮
+          document.getElementById('prev-page').disabled = currentPage <= 1;
+          document.getElementById('next-page').disabled = currentPage >= totalPages;
+          
+          // 清空表格
+          tableBody.innerHTML = '';
+          
+          if (!data.articles || data.articles.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="7" class="text-center">没有找到文章</td></tr>';
+            return;
+          }
+          
+          // 填充表格
+          data.articles.forEach(article => {
+            const row = document.createElement('tr');
+            
+            // 设置行的状态类
+            if (article.status === 'draft') {
+              row.classList.add('row-draft');
+            } else if (article.status === 'published') {
+              row.classList.add('row-published');
+            } else if (article.status === 'archived') {
+              row.classList.add('row-archived');
+            }
+            
+            // 文章ID
+            const idCell = document.createElement('td');
+            idCell.textContent = article.id;
+            row.appendChild(idCell);
+            
+            // 标题
+            const titleCell = document.createElement('td');
+            const titleLink = document.createElement('a');
+            titleLink.href = `/debunk/articles/${article.id}`;
+            titleLink.textContent = article.title;
+            titleLink.className = 'article-title-link';
+            titleCell.appendChild(titleLink);
+            row.appendChild(titleCell);
+            
+            // 作者
+            const authorCell = document.createElement('td');
+            if (article.author && article.author.username) {
+                authorCell.textContent = article.author.username;
+            } else {
+                authorCell.textContent = '未知';
+            }
+            row.appendChild(authorCell);
+            
+            // 标签
+            const tagsCell = document.createElement('td');
+            if (article.tags && article.tags.length > 0) {
+              article.tags.slice(0, 3).forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'tag';
+                tagSpan.textContent = tag;
+                tagsCell.appendChild(tagSpan);
+              });
+              
+              if (article.tags.length > 3) {
+                const moreSpan = document.createElement('span');
+                moreSpan.className = 'tag-more';
+                moreSpan.textContent = `+${article.tags.length - 3}`;
+                tagsCell.appendChild(moreSpan);
+              }
+            } else {
+              tagsCell.textContent = '无标签';
+            }
+            row.appendChild(tagsCell);
+            
+            // 状态
+            const statusCell = document.createElement('td');
+            let statusText = '';
+            let statusClass = '';
+            
+            switch(article.status) {
+              case 'draft':
+                statusText = '草稿';
+                statusClass = 'status-draft';
+                break;
+              case 'published':
+                statusText = '已发布';
+                statusClass = 'status-published';
+                break;
+              case 'archived':
+                statusText = '已归档';
+                statusClass = 'status-archived';
+                break;
+              default:
+                statusText = '未知';
+            }
+            
+            statusCell.textContent = statusText;
+            statusCell.className = statusClass;
+            row.appendChild(statusCell);
+            
+            // 创建日期
+            const dateCell = document.createElement('td');
+            dateCell.textContent = new Date(article.created_at).toLocaleDateString();
+            row.appendChild(dateCell);
+            
+            // 操作按钮
+            const actionsCell = document.createElement('td');
+            
+            // 查看按钮
+            const viewBtn = document.createElement('a');
+            viewBtn.href = `/debunk/articles/${article.id}`;
+            viewBtn.className = 'btn btn-sm btn-info action-btn';
+            viewBtn.textContent = '查看';
+            actionsCell.appendChild(viewBtn);
+            
+            // 编辑按钮
+            const editBtn = document.createElement('a');
+            editBtn.href = `/debunk/articles/${article.id}/edit`;
+            editBtn.className = 'btn btn-sm btn-primary action-btn';
+            editBtn.textContent = '编辑';
+            actionsCell.appendChild(editBtn);
+            
+            // 添加其他按钮
+            if (article.status === 'draft') {
+              const publishBtn = document.createElement('button');
+              publishBtn.className = 'btn btn-sm btn-success action-btn';
+              publishBtn.textContent = '发布';
+              publishBtn.addEventListener('click', () => updateArticleStatus(article.id, 'published'));
+              actionsCell.appendChild(publishBtn);
+            } else if (article.status === 'published') {
+              const archiveBtn = document.createElement('button');
+              archiveBtn.className = 'btn btn-sm btn-warning action-btn';
+              archiveBtn.textContent = '归档';
+              archiveBtn.addEventListener('click', () => updateArticleStatus(article.id, 'archived'));
+              actionsCell.appendChild(archiveBtn);
+            } else if (article.status === 'archived') {
+              const publishBtn = document.createElement('button');
+              publishBtn.className = 'btn btn-sm btn-success action-btn';
+              publishBtn.textContent = '重新发布';
+              publishBtn.addEventListener('click', () => updateArticleStatus(article.id, 'published'));
+              actionsCell.appendChild(publishBtn);
+            }
+            
+            // 删除按钮
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'btn btn-sm btn-danger action-btn';
+            deleteBtn.textContent = '删除';
+            deleteBtn.addEventListener('click', () => deleteArticle(article.id, article.title));
+            actionsCell.appendChild(deleteBtn);
+            
+            row.appendChild(actionsCell);
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => {
+          tableBody.innerHTML = `<tr><td colspan="7" class="text-center error-text">加载失败: ${error.message}</td></tr>`;
+        });
+      }
+      
+      // 更新文章状态
+      function updateArticleStatus(articleId, newStatus) {
+        fetch(`/api/debunk/articles/${articleId}/status`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+          },
+          body: JSON.stringify({
+            status: newStatus
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.message && data.message.includes('成功')) {
+            showToast(`文章状态已更新`, 'success');
+            loadArticles();
+          } else {
+            showToast(data.message || '状态更新失败', 'danger');
+          }
+        })
+        .catch(error => {
+          showToast('更新状态时发生错误', 'danger');
+        });
+      }
+      
+      // 删除文章
+      function deleteArticle(articleId, articleTitle) {
+        if (confirm(`确定要删除文章"${articleTitle}"吗？此操作不可撤销！`)) {
+          fetch(`/api/debunk/articles/${articleId}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.message && data.message.includes('成功')) {
+              showToast('文章已成功删除', 'success');
+              loadArticles();
+            } else {
+              showToast(data.message || '删除失败', 'danger');
+            }
+          })
+          .catch(error => {
+            showToast('删除文章时发生错误', 'danger');
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html> 

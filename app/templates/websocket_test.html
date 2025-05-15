@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket 测试</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .connected {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .disconnected {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>WebSocket 测试</h2>
+    
+    <div>
+        <label for="token">Token:</label><br>
+        <textarea id="token" rows="3" cols="50"></textarea>
+    </div>
+    
+    <div>
+        <button onclick="connect()">连接</button>
+        <button onclick="disconnect()">断开</button>
+    </div>
+    
+    <div id="status" class="status disconnected">未连接</div>
+    <div id="user-info" style="margin: 10px 0;">当前用户: 未登录</div>
+    
+    <h3>接收到的消息:</h3>
+    <div id="messages"></div>
+    
+    <script>
+        let socket;
+        let token;
+        
+        function connect() {
+            // 获取token
+            token = document.getElementById('token').value;
+            
+            // 连接WebSocket
+            socket = io('http://192.168.1.114:5005', {
+                extraHeaders: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            
+            // 监听连接事件
+            socket.on('connect', () => {
+                console.log('Connected to WebSocket');
+                document.getElementById('status').textContent = '已连接';
+                document.getElementById('status').className = 'status connected';
+            });
+            
+            // 监听连接响应
+            socket.on('connect_response', (data) => {
+                console.log('Connection response:', data);
+                if (data.success) {
+                    document.getElementById('user-info').textContent = `当前用户: ID ${data.user_id}`;
+                }
+            });
+            
+            // 监听断开连接事件
+            socket.on('disconnect', () => {
+                console.log('Disconnected from WebSocket');
+                document.getElementById('status').textContent = '未连接';
+                document.getElementById('status').className = 'status disconnected';
+                document.getElementById('user-info').textContent = '当前用户: 未登录';
+            });
+            
+            // 监听新消息事件
+            socket.on('new_message', (message) => {
+                console.log('New message:', message);
+                const messagesDiv = document.getElementById('messages');
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message';
+                messageElement.innerHTML = `
+                    <strong>${message.title}</strong><br>
+                    <span>From: ${message.sender_id} To: ${message.receiver_id}</span><br>
+                    <p>${message.content}</p>
+                    <small>${message.send_time}</small>
+                `;
+                messagesDiv.appendChild(messageElement);
+            });
+        }
+        
+        function disconnect() {
+            if (socket) {
+                socket.disconnect();
+            }
+        }
+    </script>
+</body>
+</html> 

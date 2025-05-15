@@ -1,0 +1,30 @@
+import os
+from dotenv import load_dotenv
+
+# 确定环境
+env = os.getenv('SERVER_ENV', 'dev').lower()
+print(f"----- 配置环境: {env} -----")
+
+# 构造 .env 文件路径
+base_dir = os.path.abspath(os.path.dirname(__file__))
+project_dir = os.path.join(base_dir, '..')
+
+# 根据环境选择 .env 文件
+if env == 'prod':
+    dotenv_path = os.path.join(project_dir, '.env_prod')
+else:
+    dotenv_path = os.path.join(project_dir, '.env')
+
+# 加载环境变量
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path=dotenv_path, override=True)
+    print(f"----- 已加载环境变量文件: {dotenv_path} -----")
+else:
+    print(f"----- 警告: 环境变量文件不存在: {dotenv_path} -----")
+    # 尝试加载默认 .env
+    default_path = os.path.join(project_dir, '.env')
+    if os.path.exists(default_path) and dotenv_path != default_path:
+        load_dotenv(default_path, override=True)
+        print(f"----- 已加载默认环境变量文件: {default_path} -----")
+
+# ... 其余的配置类定义和 config_by_name 保持不变 ... 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发布辟谣文章 - 辟谣管理系统</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">Truth Guardian</a>
+      <ul class="navbar-menu">
+        <li class="navbar-item">
+          <a href="/debunk/articles" class="navbar-link">文章列表</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/debunk/articles/create" class="navbar-link active">发布文章</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/ai-chat" class="navbar-link">AI辟谣机器人</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#" class="navbar-link" onclick="logout(); return false;">退出登录</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>发布辟谣文章</h3>
+      </div>
+      <div class="card-body">
+        <form id="article-form" action="/api/debunk/articles" method="POST" class="needs-validation" novalidate>
+          <div class="form-group">
+            <label for="title">文章标题</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="summary">文章摘要</label>
+            <input type="text" class="form-control" id="summary" name="summary">
+          </div>
+          
+          <div class="form-group">
+            <label for="content">文章内容</label>
+            <textarea class="form-control" id="content" name="content" rows="10" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="source">文章来源</label>
+            <input type="text" class="form-control" id="source" name="source">
+          </div>
+          
+          <div class="form-group">
+            <label for="tags">标签（逗号分隔）</label>
+            <input type="text" class="form-control" id="tags" name="tags" placeholder="例如: 健康, 社会, 官方辟谣">
+          </div>
+          
+          <div class="form-group">
+            <label for="rumor_reports">关联谣言报道ID（逗号分隔）</label>
+            <input type="text" class="form-control" id="rumor_reports" name="rumor_reports" placeholder="例如: 1, 2, 3">
+          </div>
+          
+          <div class="form-group">
+            <label for="clarification_reports">关联澄清报道ID（逗号分隔）</label>
+            <input type="text" class="form-control" id="clarification_reports" name="clarification_reports" placeholder="例如: 1, 2, 3">
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">发布文章</button>
+            <a href="/debunk/articles" class="btn btn-secondary">取消</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 检查登录状态
+      if (!localStorage.getItem('access_token')) {
+        window.location.href = '/auth/login';
+        return;
+      }
+      
+      // 处理表单提交
+      const articleForm = document.getElementById('article-form');
+      if (articleForm) {
+        articleForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // 获取表单数据
+          const formData = new FormData(articleForm);
+          const formObject = {};
+          
+          formData.forEach((value, key) => {
+            formObject[key] = value;
+          });
+          
+          // 处理标签
+          if (formObject.tags) {
+            formObject.tags = formObject.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+          }
+          
+          // 处理关联报告，转换为数字数组
+          if (formObject.rumor_reports) {
+            formObject.rumor_reports = formObject.rumor_reports.split(',')
+              .map(id => parseInt(id.trim()))
+              .filter(id => !isNaN(id));
+          }
+          
+          if (formObject.clarification_reports) {
+            formObject.clarification_reports = formObject.clarification_reports.split(',')
+              .map(id => parseInt(id.trim()))
+              .filter(id => !isNaN(id));
+          }
+          
+          // 发送请求
+          fetch('/api/debunk/articles', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            },
+            body: JSON.stringify(formObject)
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`请求失败: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.message && data.message.includes('成功')) {
+              showToast('文章发布成功', 'success');
+              setTimeout(() => {
+                window.location.href = '/debunk/articles';
+              }, 1000);
+            } else {
+              showToast(data.message || '发布失败', 'danger');
+            }
+          })
+          .catch(error => {
+            showToast(`操作失败: ${error.message}`, 'danger');
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html> 

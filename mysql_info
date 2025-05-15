@@ -1,0 +1,362 @@
+-- truetuardian数据库表结构 - 系统数据库设计
+-- 系统主要用于辟谣、澄清谣言及真实信息管理
+
+
+-- 表: alembic_version 的结构
+-- 描述: 数据库迁移版本控制表，用于跟踪数据库架构变更
+-- 作用: 存储当前数据库的版本号，便于数据库迁移管理
+
+*************************** 1. row ***************************
+       Table: alembic_version
+Create Table: CREATE TABLE `alembic_version` (
+  `version_num` varchar(32) NOT NULL, -- 数据库版本号，用于标识当前数据库架构版本
+  PRIMARY KEY (`version_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: article_clarification_association 的结构
+-- 描述: 辟谣文章与澄清报告的关联表
+-- 作用: 建立辟谣文章和澄清报告之间的多对多关系
+
+*************************** 1. row ***************************
+       Table: article_clarification_association
+Create Table: CREATE TABLE `article_clarification_association` (
+  `article_id` int NOT NULL, -- 辟谣文章ID，关联debunk_article表
+  `clarification_report_id` int NOT NULL, -- 澄清报告ID，关联clarification_report表
+  PRIMARY KEY (`article_id`,`clarification_report_id`),
+  KEY `clarification_report_id` (`clarification_report_id`),
+  CONSTRAINT `article_clarification_association_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `debunk_article` (`id`),
+  CONSTRAINT `article_clarification_association_ibfk_2` FOREIGN KEY (`clarification_report_id`) REFERENCES `clarification_report` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: article_rumor_association 的结构
+-- 描述: 辟谣文章与谣言报告的关联表
+-- 作用: 建立辟谣文章和谣言报告之间的多对多关系
+
+*************************** 1. row ***************************
+       Table: article_rumor_association
+Create Table: CREATE TABLE `article_rumor_association` (
+  `article_id` int NOT NULL, -- 辟谣文章ID，关联debunk_article表
+  `rumor_report_id` int NOT NULL, -- 谣言报告ID，关联rumor_report表
+  PRIMARY KEY (`article_id`,`rumor_report_id`),
+  KEY `rumor_report_id` (`rumor_report_id`),
+  CONSTRAINT `article_rumor_association_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `debunk_article` (`id`),
+  CONSTRAINT `article_rumor_association_ibfk_2` FOREIGN KEY (`rumor_report_id`) REFERENCES `rumor_report` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: clarification_report 的结构
+-- 描述: 事实澄清报告表
+-- 作用: 存储对特定事件或信息的澄清说明，提供权威的事实解释
+
+*************************** 1. row ***************************
+       Table: clarification_report
+Create Table: CREATE TABLE `clarification_report` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `title` varchar(255) NOT NULL, -- 澄清报告标题
+  `content` text NOT NULL, -- 澄清报告详细内容
+  `source` varchar(255) DEFAULT NULL, -- 澄清信息来源
+  `url` varchar(500) DEFAULT NULL, -- 原始澄清信息的URL链接
+  `published_at` datetime DEFAULT NULL, -- 澄清信息发布时间
+  `created_at` datetime DEFAULT NULL, -- 系统内创建时间
+  `authority_score` int DEFAULT NULL, -- 权威性评分，用于衡量来源的可信度
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: debunk_article 的结构
+-- 描述: 辟谣文章表
+-- 作用: 存储系统中发布的辟谣文章，是系统的核心内容之一
+
+*************************** 1. row ***************************
+       Table: debunk_article
+Create Table: CREATE TABLE `debunk_article` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `title` varchar(255) NOT NULL, -- 辟谣文章标题
+  `content` text NOT NULL, -- 辟谣文章内容
+  `summary` varchar(500) DEFAULT NULL, -- 文章摘要
+  `source` varchar(255) DEFAULT NULL, -- 文章信息来源
+  `author_id` int NOT NULL, -- 作者ID，关联user表
+  `status` varchar(20) DEFAULT NULL, -- 文章状态(如草稿、已发布、已归档等)
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  `updated_at` datetime DEFAULT NULL, -- 最后更新时间
+  `published_at` datetime DEFAULT NULL, -- 发布时间
+  `tags` varchar(255) DEFAULT NULL, -- 文章标签，用逗号分隔的标签列表
+  PRIMARY KEY (`id`),
+  KEY `author_id` (`author_id`),
+  CONSTRAINT `debunk_article_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: debunk_content 的结构
+-- 描述: 辟谣内容表
+-- 作用: 存储从各种外部渠道收集的需要辟谣的内容
+
+*************************** 1. row ***************************
+       Table: debunk_content
+Create Table: CREATE TABLE `debunk_content` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `source` varchar(50) NOT NULL, -- 内容来源平台(如微博、微信等)
+  `content_id` varchar(100) DEFAULT NULL, -- 原平台内容ID
+  `title` varchar(500) DEFAULT NULL, -- 内容标题
+  `content` text, -- 内容正文
+  `author_id` varchar(100) DEFAULT NULL, -- 原作者ID
+  `author_name` varchar(100) DEFAULT NULL, -- 原作者名称
+  `author_verified` tinyint(1) DEFAULT NULL, -- 作者是否认证
+  `author_verified_type` int DEFAULT NULL, -- 作者认证类型
+  `author_verified_reason` varchar(255) DEFAULT NULL, -- 作者认证理由
+  `region` varchar(100) DEFAULT NULL, -- 地区
+  `attitudes_count` int DEFAULT NULL, -- 点赞/喜欢数量
+  `comments_count` int DEFAULT NULL, -- 评论数量
+  `reposts_count` int DEFAULT NULL, -- 转发/分享数量
+  `images` text, -- 图片URLs，JSON格式
+  `link` varchar(500) DEFAULT NULL, -- 原内容链接
+  `publish_time` varchar(50) DEFAULT NULL, -- 发布时间
+  `created_at` datetime DEFAULT NULL, -- 系统内创建时间
+  `search_query` varchar(255) DEFAULT NULL, -- 用于收集该内容的搜索词
+  `status` varchar(20) DEFAULT NULL, -- 处理状态
+  `origin_content` text, -- 原始内容，未经处理
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `content_id` (`content_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: messages 的结构
+-- 描述: 系统消息表
+-- 作用: 存储系统内部用户之间的消息通信
+
+*************************** 1. row ***************************
+       Table: messages
+Create Table: CREATE TABLE `messages` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 消息ID
+  `sender_id` int NOT NULL COMMENT '发送者ID', -- 消息发送者ID
+  `receiver_id` int NOT NULL COMMENT '接收者ID', -- 消息接收者ID
+  `msg_type` varchar(10) NOT NULL COMMENT '消息类型:text/image/file', -- 消息类型
+  `content` text NOT NULL COMMENT '消息内容', -- 消息内容
+  `priority` int DEFAULT NULL COMMENT '优先级:0-普通,1-重要,2-紧急', -- 消息优先级
+  `is_read` tinyint(1) DEFAULT NULL COMMENT '是否已读', -- 已读状态
+  `send_time` datetime NOT NULL COMMENT '发送时间', -- 消息发送时间
+  `read_time` datetime DEFAULT NULL COMMENT '阅读时间', -- 消息阅读时间
+  `expire_time` datetime DEFAULT NULL COMMENT '过期时间', -- 消息过期时间
+  `title` varchar(100) NOT NULL COMMENT '消息标题', -- 消息标题
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: news 的结构
+-- 描述: 新闻数据表
+-- 作用: 存储从各渠道采集的新闻信息，用于分析和辟谣参考
+
+*************************** 1. row ***************************
+       Table: news
+Create Table: CREATE TABLE `news` (
+  `id` varchar(32) NOT NULL, -- 新闻唯一标识
+  `url` varchar(512) NOT NULL, -- 新闻原文URL
+  `title` varchar(256) NOT NULL, -- 新闻标题
+  `content` text NOT NULL, -- 新闻正文内容
+  `summary` varchar(512) DEFAULT NULL, -- 新闻摘要
+  `publish_date` datetime DEFAULT NULL, -- 发布日期
+  `author` varchar(64) DEFAULT NULL, -- 作者
+  `category` varchar(64) DEFAULT NULL, -- 新闻分类
+  `tags` json DEFAULT NULL, -- 标签，JSON格式
+  `source` varchar(64) DEFAULT NULL, -- 新闻来源(如人民日报、新华社等)
+  `source_type` varchar(32) NOT NULL, -- 来源类型(如官方媒体、自媒体等)
+  `media` json DEFAULT NULL, -- 媒体资源(图片、视频等)，JSON格式
+  `keyword_match` float DEFAULT NULL, -- 关键词匹配度
+  `recommendation_level` int DEFAULT NULL, -- 推荐级别
+  `crawl_time` datetime DEFAULT NULL, -- 爬取时间
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  `updated_at` datetime DEFAULT NULL, -- 更新时间
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ix_news_url` (`url`),
+  KEY `ix_news_crawl_time` (`crawl_time`),
+  KEY `ix_news_publish_date` (`publish_date`),
+  KEY `ix_news_source_type` (`source_type`),
+  KEY `ix_news_category` (`category`),
+  KEY `ix_news_title` (`title`),
+  KEY `ix_news_author` (`author`),
+  KEY `ix_news_source` (`source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: reading_histories 的结构
+-- 描述: 用户阅读历史表
+-- 作用: 记录微信用户的阅读历史，用于个性化推荐和用户分析
+
+*************************** 1. row ***************************
+       Table: reading_histories
+Create Table: CREATE TABLE `reading_histories` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `user_id` int NOT NULL, -- 用户ID，关联wx_users表
+  `article_id` int NOT NULL, -- 文章ID
+  `article_type` varchar(20) NOT NULL, -- 文章类型(如辟谣文章、谣言报告等)
+  `read_at` datetime DEFAULT NULL, -- 阅读时间
+  `read_duration` int DEFAULT NULL, -- 阅读时长(秒)
+  `is_completed` tinyint(1) DEFAULT NULL, -- 是否阅读完成
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `reading_histories_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `wx_users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: roles 的结构
+-- 描述: 角色表
+-- 作用: 定义系统中的用户角色，用于权限管理
+
+*************************** 1. row ***************************
+       Table: roles
+Create Table: CREATE TABLE `roles` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 角色ID
+  `name` varchar(50) NOT NULL, -- 角色名称
+  `description` varchar(255) DEFAULT NULL, -- 角色描述
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: rumor_report 的结构
+-- 描述: 谣言报告表
+-- 作用: 存储已被识别的谣言信息，为辟谣工作提供依据
+
+*************************** 1. row ***************************
+       Table: rumor_report
+Create Table: CREATE TABLE `rumor_report` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `title` varchar(255) NOT NULL, -- 谣言标题
+  `content` text NOT NULL, -- 谣言内容
+  `source` varchar(255) DEFAULT NULL, -- 谣言来源
+  `url` varchar(500) DEFAULT NULL, -- 谣言来源URL
+  `published_at` datetime DEFAULT NULL, -- 谣言发布时间
+  `created_at` datetime DEFAULT NULL, -- 系统内创建时间
+  `rumor_type` varchar(50) DEFAULT NULL, -- 谣言类型(如虚假信息、误导性信息等)
+  `rumor_probability` float DEFAULT NULL, -- 谣言概率评分
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: user 的结构
+-- 描述: 系统用户表
+-- 作用: 存储系统管理端的用户信息
+
+*************************** 1. row ***************************
+       Table: user
+Create Table: CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 用户ID
+  `name` varchar(80) DEFAULT NULL, -- 用户真实姓名
+  `phone` varchar(20) DEFAULT NULL, -- 电话号码
+  `user_name` varchar(20) NOT NULL, -- 用户名(登录名)
+  `password_hash` varchar(128) NOT NULL, -- 密码哈希值
+  `bio` varchar(200) DEFAULT NULL, -- 个人简介
+  `tags` varchar(500) DEFAULT NULL, -- 用户标签
+  `interests` varchar(500) DEFAULT NULL, -- 兴趣爱好
+  `avatar_url` varchar(255) DEFAULT NULL, -- 头像URL
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  `updated_at` datetime DEFAULT NULL, -- 更新时间
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_name` (`user_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: user_roles 的结构
+-- 描述: 用户角色关联表
+-- 作用: 建立用户和角色之间的多对多关系，实现RBAC权限控制
+
+*************************** 1. row ***************************
+       Table: user_roles
+Create Table: CREATE TABLE `user_roles` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `user_id` int NOT NULL, -- 用户ID，关联user表
+  `role_id` int NOT NULL, -- 角色ID，关联roles表
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  PRIMARY KEY (`id`),
+  KEY `role_id` (`role_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  CONSTRAINT `user_roles_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: weibo_debunk 的结构
+-- 描述: 微博辟谣内容表
+-- 作用: 存储从微博平台采集的辟谣相关内容
+
+*************************** 1. row ***************************
+       Table: weibo_debunk
+Create Table: CREATE TABLE `weibo_debunk` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `source` varchar(50) DEFAULT NULL, -- 来源平台(微博)
+  `content` text NOT NULL, -- 微博内容
+  `weibo_mid_id` varchar(50) DEFAULT NULL, -- 微博mid唯一标识
+  `weibo_user_id` varchar(50) DEFAULT NULL, -- 微博用户ID
+  `weibo_user_name` varchar(100) DEFAULT NULL, -- 微博用户名
+  `user_verified` tinyint(1) DEFAULT NULL, -- 用户是否认证
+  `user_verified_type` int DEFAULT NULL, -- 用户认证类型
+  `user_verified_reason` varchar(255) DEFAULT NULL, -- 用户认证理由
+  `region` varchar(100) DEFAULT NULL, -- 地区
+  `attitudes_count` int DEFAULT NULL, -- 点赞数
+  `comments_count` int DEFAULT NULL, -- 评论数
+  `reposts_count` int DEFAULT NULL, -- 转发数
+  `pics` text, -- 图片URLs，JSON格式
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  `search_query` varchar(255) DEFAULT NULL, -- 搜索关键词
+  `status` varchar(20) DEFAULT NULL, -- 处理状态
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `weibo_mid_id` (`weibo_mid_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: wx_users 的结构
+-- 描述: 微信用户表
+-- 作用: 存储微信小程序/公众号用户信息
+
+*************************** 1. row ***************************
+       Table: wx_users
+Create Table: CREATE TABLE `wx_users` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `openid` varchar(64) NOT NULL, -- 微信openid
+  `unionid` varchar(64) DEFAULT NULL, -- 微信unionid
+  `session_key` varchar(128) DEFAULT NULL, -- 微信会话密钥
+  `nickname` varchar(64) DEFAULT NULL, -- 用户昵称
+  `avatar_url` varchar(512) DEFAULT NULL, -- 头像URL
+  `gender` smallint DEFAULT NULL, -- 性别
+  `country` varchar(64) DEFAULT NULL, -- 国家
+  `province` varchar(64) DEFAULT NULL, -- 省份
+  `city` varchar(64) DEFAULT NULL, -- 城市
+  `phone` varchar(32) DEFAULT NULL, -- 手机号
+  `extra_data` json DEFAULT NULL, -- 额外信息，JSON格式
+  `is_active` tinyint(1) DEFAULT NULL, -- 是否活跃
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  `updated_at` datetime DEFAULT NULL, -- 更新时间
+  `last_login` datetime DEFAULT NULL, -- 最后登录时间
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ix_wx_users_openid` (`openid`),
+  UNIQUE KEY `unionid` (`unionid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+-- 表: xinlang_debunk 的结构
+-- 描述: 新浪辟谣内容表
+-- 作用: 存储从新浪平台采集的辟谣相关内容
+
+*************************** 1. row ***************************
+       Table: xinlang_debunk
+Create Table: CREATE TABLE `xinlang_debunk` (
+  `id` int NOT NULL AUTO_INCREMENT, -- 主键ID
+  `source` varchar(50) DEFAULT NULL, -- 来源平台(新浪)
+  `news_id` varchar(100) DEFAULT NULL, -- 新闻ID
+  `data_id` varchar(100) DEFAULT NULL, -- 数据ID
+  `title` varchar(500) NOT NULL, -- 新闻标题
+  `source_name` varchar(100) DEFAULT NULL, -- 来源名称
+  `link` varchar(500) DEFAULT NULL, -- 新闻链接
+  `image_url` varchar(500) DEFAULT NULL, -- 图片URL
+  `category` varchar(50) DEFAULT NULL, -- 分类
+  `comment_id` varchar(100) DEFAULT NULL, -- 评论ID
+  `publish_time` varchar(50) DEFAULT NULL, -- 发布时间
+  `search_query` varchar(255) DEFAULT NULL, -- 搜索关键词
+  `created_at` datetime DEFAULT NULL, -- 创建时间
+  `status` varchar(20) DEFAULT NULL, -- 处理状态
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `news_id` (`news_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

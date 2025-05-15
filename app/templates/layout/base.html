@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}辟谣管理系统{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="{{ url_for('index') }}" class="navbar-brand">Truth Guardian</a>
+      <ul class="navbar-menu">
+        {% if current_user %}
+          <li class="navbar-item">
+            <a href="{{ url_for('debunk.get_articles') }}" class="navbar-link {% if request.path.startswith('/debunk/articles') and not request.path.endswith('/create') %}active{% endif %}">文章列表</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{{ url_for('debunk.create_article_view') }}" class="navbar-link {% if request.path.endswith('/create') %}active{% endif %}">发布文章</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" onclick="logout(); return false;">退出登录</a>
+          </li>
+        {% else %}
+          <li class="navbar-item">
+            <a href="{{ url_for('auth.login_view') }}" class="navbar-link {% if request.path == url_for('auth.login_view') %}active{% endif %}">登录</a>
+          </li>
+          <li class="navbar-item">
+            <a href="{{ url_for('auth.register_view') }}" class="navbar-link {% if request.path == url_for('auth.register_view') %}active{% endif %}">注册</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html> 

@@ -1,0 +1,10 @@
+CREATE USER 'truetuardian'@'%' IDENTIFIED BY 'truetuardian123456';
+-- 授予全局权限（生产环境建议缩小范围）
+GRANT ALL PRIVILEGES ON *.* TO 'truetuardian'@'%' WITH GRANT OPTION;
+
+-- 刷新权限
+FLUSH PRIVILEGES;
+create database truetuardian;
+flask db init
+flask db migrate -m "为表添加字段" 
+flask db upgrade

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人资料 - Truth Guardian</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/spacing.css">
+  <style>
+    .profile-section {
+      margin-bottom: 2rem;
+    }
+    
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-col {
+      flex: 1;
+    }
+    
+    .label-required:after {
+      content: " *";
+      color: var(--danger-color);
+    }
+    
+    .tab-container {
+      margin-bottom: 2rem;
+    }
+    
+    .tab-nav {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-item {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      border-bottom: 2px solid transparent;
+    }
+    
+    .tab-item.active {
+      border-bottom: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .result-message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    
+    .result-message.success {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: var(--success-color);
+      border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+    
+    .result-message.error {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: var(--danger-color);
+      border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+
+    /* 多标签输入框样式 */
+    .tag-input-container {
+      margin-top: 0.5rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag-item {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(156, 60, 255, 0.1);
+      color: var(--secondary-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .tag-item .remove-tag {
+      margin-left: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tag-input {
+      margin-top: 0.5rem;
+      display: flex;
+    }
+
+    .tag-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      margin-right: 0.5rem;
+    }
+
+    .tag-input button {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">Truth Guardian</a>
+      <ul class="navbar-menu">
+        <li class="navbar-item">
+          <a href="/debunk/articles" class="navbar-link">文章列表</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/debunk/articles/create" class="navbar-link">发布文章</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/auth/profile" class="navbar-link active">个人资料</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#" class="navbar-link" onclick="logout(); return false;">退出登录</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <div class="card">
+      <div class="card-header">
+        <h3>个人资料设置</h3>
+      </div>
+      <div class="card-body">
+        <div class="profile-section">
+          <div class="profile-avatar" id="user-avatar"></div>
+          <h4 id="username-display">加载中...</h4>
+        </div>
+        
+        <div class="tab-container">
+          <div class="tab-nav">
+            <div class="tab-item active" data-tab="profile">基本资料</div>
+            <div class="tab-item" data-tab="preferences">兴趣与标签</div>
+            <div class="tab-item" data-tab="security">安全设置</div>
+          </div>
+          
+          <!-- 基本资料表单 -->
+          <div class="tab-content active" id="profile-tab">
+            <div id="profile-message" class="result-message"></div>
+            <form id="profile-form">
+              <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" class="form-control" disabled>
+                <small>用户名不可修改</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="name" class="label-required">姓名</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">手机号码</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="请输入手机号码">
+              </div>
+              
+              <div class="form-group">
+                <label for="bio">个人签名</label>
+                <textarea id="bio" name="bio" class="form-control" rows="3" placeholder="介绍一下自己吧..."></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="avatar-url">头像URL</label>
+                <input type="url" id="avatar-url" name="avatar_url" class="form-control" placeholder="输入头像图片URL">
+                <small>提供一个有效的图片URL作为您的头像</small>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">保存修改</button>
+            </form>
+          </div>
+          
+          <!-- 兴趣与标签表单 -->
+          <div class="tab-content" id="preferences-tab">
+            <div id="preferences-message" class="result-message"></div>
+            <form id="preferences-form">
+              <div class="form-group">
+                <label for="tags">个人标签</label>
+                <small>添加一些标签来描述自己（按回车添加标签）</small>
+                
+                <div class="tag-input-container">
+                  <div class="tag-list" id="tags-list"></div>
+                  <div class="tag-input">
+                    <input type="text" id="tag-input" class="form-control" placeholder="输入标签按回车添加">
+                    <button type="button" id="add-tag-btn">添加</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="interests">兴趣爱好</label>
+                <small>添加一些您感兴趣的主题（按回车添加）</small>
+                
+                <div class="tag-input-container">
+                  <div class="tag-list" id="interests-list"></div>
+                  <div class="tag-input">
+                    <input type="text" id="interest-input" class="form-control" placeholder="输入兴趣按回车添加">
+                    <button type="button" id="add-interest-btn">添加</button>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">保存修改</button>
+            </form>
+          </div>
+          
+          <!-- 安全设置表单 -->
+          <div class="tab-content" id="security-tab">
+            <div id="security-message" class="result-message"></div>
+            <form id="security-form">
+              <div class="form-group">
+                <label for="current-password" class="label-required">当前密码</label>
+                <input type="password" id="current-password" name="current_password" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="new-password" class="label-required">新密码</label>
+                <input type="password" id="new-password" name="new_password" class="form-control" required minlength="6">
+                <small>密码长度至少6位</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="confirm-password" class="label-required">确认新密码</label>
+                <input type="password" id="confirm-password" name="confirm_password" class="form-control" required>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">修改密码</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/static/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 检查登录状态
+      if (!localStorage.getItem('access_token')) {
+        window.location.href = '/auth/login';
+        return;
+      }
+      
+      // 初始化标签页
+      initTabs();
+      
+      // 加载用户信息
+      loadUserInfo();
+      
+      // 初始化标签和兴趣功能
+      initTagInput('tag-input', 'add-tag-btn', 'tags-list');
+      initTagInput('interest-input', 'add-interest-btn', 'interests-list');
+      
+      // 绑定表单提交事件
+      document.getElementById('profile-form').addEventListener('submit', updateProfile);
+      document.getElementById('preferences-form').addEventListener('submit', updatePreferences);
+      document.getElementById('security-form').addEventListener('submit', updatePassword);
+    });
+    
+    // 标签页切换逻辑
+    function initTabs() {
+      const tabItems = document.querySelectorAll('.tab-item');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const tabId = item.getAttribute('data-tab');
+          
+          // 更新标签状态
+          tabItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          
+          // 更新内容区域状态
+          tabContents.forEach(content => content.classList.remove('active'));
+          document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+      });
+    }
+    
+    // 初始化标签输入功能
+    function initTagInput(inputId, buttonId, listId) {
+      const input = document.getElementById(inputId);
+      const button = document.getElementById(buttonId);
+      const list = document.getElementById(listId);
+      
+      // 添加标签按钮点击事件
+      button.addEventListener('click', () => addTag(input, list));
+      
+      // 输入框回车事件
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addTag(input, list);
+        }
+      });
+    }
+    
+    // 添加单个标签
+    function addTag(input, list) {
+      const value = input.value.trim();
+      if (!value) return;
+      
+      // 检查是否已存在相同标签
+      const existingTags = Array.from(list.querySelectorAll('.tag-text')).map(tag => tag.textContent);
+      if (existingTags.includes(value)) {
+        input.value = '';
+        return;
+      }
+      
+      // 创建标签元素
+      const tagItem = document.createElement('div');
+      tagItem.className = 'tag-item';
+      
+      const tagText = document.createElement('span');
+      tagText.className = 'tag-text';
+      tagText.textContent = value;
+      
+      const removeBtn = document.createElement('span');
+      removeBtn.className = 'remove-tag';
+      removeBtn.textContent = '×';
+      removeBtn.addEventListener('click', () => list.removeChild(tagItem));
+      
+      tagItem.appendChild(tagText);
+      tagItem.appendChild(removeBtn);
+      list.appendChild(tagItem);
+      
+      // 清空输入框
+      input.value = '';
+    }
+    
+    // 从标签列表中获取所有标签值
+    function getTagValues(listId) {
+      const list = document.getElementById(listId);
+      return Array.from(list.querySelectorAll('.tag-text')).map(tag => tag.textContent);
+    }
+    
+    // 加载用户信息
+    function loadUserInfo() {
+      fetch('/api/auth/user', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('用户信息获取失败');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // 更新头像
+        const avatar = document.getElementById('user-avatar');
+        if (data.name) {
+          avatar.textContent = data.name.substring(0, 1).toUpperCase();
+        } else if (data.user_name) {
+          avatar.textContent = data.user_name.substring(0, 1).toUpperCase();
+        } else {
+          avatar.textContent = 'U';
+        }
+        
+        // 更新用户名显示
+        document.getElementById('username-display').textContent = data.user_name;
+        
+        // 填充基本资料表单
+        document.getElementById('username').value = data.user_name;
+        document.getElementById('name').value = data.name || '';
+        document.getElementById('phone').value = data.phone || '';
+        document.getElementById('bio').value = data.bio || '';
+        document.getElementById('avatar-url').value = data.avatar_url || '';
+        
+        // 填充标签和兴趣
+        const tagsList = document.getElementById('tags-list');
+        const interestsList = document.getElementById('interests-list');
+        
+        // 清空现有标签
+        tagsList.innerHTML = '';
+        interestsList.innerHTML = '';
+        
+        // 添加标签
+        if (data.tags && data.tags.length > 0) {
+          data.tags.forEach(tag => {
+            const tagItem = document.createElement('div');
+            tagItem.className = 'tag-item';
+            
+            const tagText = document.createElement('span');
+            tagText.className = 'tag-text';
+            tagText.textContent = tag;
+            
+            const removeBtn = document.createElement('span');
+            removeBtn.className = 'remove-tag';
+            removeBtn.textContent = '×';
+            removeBtn.addEventListener('click', () => tagsList.removeChild(tagItem));
+            
+            tagItem.appendChild(tagText);
+            tagItem.appendChild(removeBtn);
+            tagsList.appendChild(tagItem);
+          });
+        }
+        
+        // 添加兴趣
+        if (data.interests && data.interests.length > 0) {
+          data.interests.forEach(interest => {
+            const interestItem = document.createElement('div');
+            interestItem.className = 'tag-item';
+            
+            const interestText = document.createElement('span');
+            interestText.className = 'tag-text';
+            interestText.textContent = interest;
+            
+            const removeBtn = document.createElement('span');
+            removeBtn.className = 'remove-tag';
+            removeBtn.textContent = '×';
+            removeBtn.addEventListener('click', () => interestsList.removeChild(interestItem));
+            
+            interestItem.appendChild(interestText);
+            interestItem.appendChild(removeBtn);
+            interestsList.appendChild(interestItem);
+          });
+        }
+      })
+      .catch(error => {
+        showMessage('profile-message', '获取用户信息失败: ' + error.message, 'error');
+      });
+    }
+    
+    // 更新个人资料
+    function updateProfile(event) {
+      event.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        bio: document.getElementById('bio').value.trim(),
+        avatar_url: document.getElementById('avatar-url').value.trim()
+      };
+      
+      if (!formData.name) {
+        showMessage('profile-message', '姓名不能为空', 'error');
+        return;
+      }
+      
+      fetch('/api/auth/user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showMessage('profile-message', data.error, 'error');
+        } else {
+          showMessage('profile-message', '个人资料更新成功', 'success');
+          // 重新加载用户信息
+          loadUserInfo();
+        }
+      })
+      .catch(error => {
+        showMessage('profile-message', '更新失败: ' + error.message, 'error');
+      });
+    }
+    
+    // 更新标签和兴趣
+    function updatePreferences(event) {
+      event.preventDefault();
+      
+      const formData = {
+        tags: getTagValues('tags-list'),
+        interests: getTagValues('interests-list')
+      };
+      
+      fetch('/api/auth/user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showMessage('preferences-message', data.error, 'error');
+        } else {
+          showMessage('preferences-message', '兴趣和标签更新成功', 'success');
+        }
+      })
+      .catch(error => {
+        showMessage('preferences-message', '更新失败: ' + error.message, 'error');
+      });
+    }
+    
+    // 更新密码
+    function updatePassword(event) {
+      event.preventDefault();
+      
+      const currentPassword = document.getElementById('current-password').value;
+      const newPassword = document.getElementById('new-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      // 简单的表单验证
+      if (!currentPassword || !newPassword || !confirmPassword) {
+        showMessage('security-message', '所有密码字段都必须填写', 'error');
+        return;
+      }
+      
+      if (newPassword.length < 6) {
+        showMessage('security-message', '新密码长度至少6位', 'error');
+        return;
+      }
+      
+      if (newPassword !== confirmPassword) {
+        showMessage('security-message', '两次输入的新密码不一致', 'error');
+        return;
+      }
+      
+      const formData = {
+        current_password: currentPassword,
+        new_password: newPassword
+      };
+      
+      fetch('/api/auth/user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          showMessage('security-message', data.error, 'error');
+        } else {
+          showMessage('security-message', '密码修改成功', 'success');
+          // 清空表单
+          document.getElementById('security-form').reset();
+        }
+      })
+      .catch(error => {
+        showMessage('security-message', '更新失败: ' + error.message, 'error');
+      });
+    }
+    
+    // 显示消息
+    function showMessage(elementId, message, type) {
+      const messageElement = document.getElementById(elementId);
+      messageElement.textContent = message;
+      messageElement.className = 'result-message ' + type;
+      messageElement.style.display = 'block';
+      
+      // 5秒后隐藏消息
+      setTimeout(() => {
+        messageElement.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html> 

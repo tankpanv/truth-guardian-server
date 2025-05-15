@@ -1,0 +1,38 @@
+[
+  {
+    "rumor_id": "rumor-001",
+    "rumor_text": "5G基站辐射会导致癌症",
+    "rumor_type": "科技",
+    "spread_platform": "抖音、朋友圈",
+    "clarification_title": "5G辐射值远低于国际安全标准，无致癌风险",
+    "fact_check": {
+      "evidence_1": "工信部测量显示5G基站辐射量仅为安全限值的1/10",
+      "evidence_2": "WHO声明：尚无证据表明符合标准的射频辐射影响健康"
+    },
+    "common_misconception": "混淆电离辐射与非电离辐射的区别",
+    "authoritative_sources": [
+      "https://www.miit.gov.cn",
+      "https://www.who.int/radiation"
+    ],
+    "danger_level": "高危",
+    "update_time": "2023-09-20"
+  },
+  {
+    "rumor_id": "rumor-002",
+    "rumor_text": "喝隔夜水会亚硝酸盐中毒",
+    "rumor_type": "健康",
+    "spread_platform": "小红书",
+    "clarification_title": "实验证明隔夜水亚硝酸盐含量仍远低于国标",
+    "fact_check": {
+      "evidence_1": "央视《生活圈》实验：隔夜水亚硝酸盐含量0.002mg/L（国标限值1mg/L）",
+      "evidence_2": "北京疾控中心：需连续饮用10吨隔夜水才可能超标"
+    },
+    "common_misconception": "忽视剂量谈毒性",
+    "authoritative_sources": [
+      "https://www.cctv.com",
+      "https://www.bjcdc.org"
+    ],
+    "danger_level": "中危",
+    "update_time": "2023-08-15"
+  }
+]

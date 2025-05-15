@@ -1,0 +1,246 @@
+// Truth Guardian System Database Structure
+// 辟谣与澄清谣言系统数据库结构
+
+Table alembic_version {
+  version_num varchar(32) [primary key, note: '数据库版本号，用于标识当前数据库架构版本']
+}
+
+Table clarification_report {
+  id int [pk, increment, note: '主键ID']
+  title varchar(255) [not null, note: '澄清报告标题']
+  content text [not null, note: '澄清报告详细内容']
+  source varchar(255) [note: '澄清信息来源']
+  url varchar(500) [note: '原始澄清信息的URL链接']
+  published_at datetime [note: '澄清信息发布时间']
+  created_at datetime [note: '系统内创建时间']
+  authority_score int [note: '权威性评分，用于衡量来源的可信度']
+}
+
+Table debunk_article {
+  id int [pk, increment, note: '主键ID']
+  title varchar(255) [not null, note: '辟谣文章标题']
+  content text [not null, note: '辟谣文章内容']
+  summary varchar(500) [note: '文章摘要']
+  source varchar(255) [note: '文章信息来源']
+  author_id int [not null, note: '作者ID，关联user表']
+  status varchar(20) [note: '文章状态(如草稿、已发布、已归档等)']
+  created_at datetime [note: '创建时间']
+  updated_at datetime [note: '最后更新时间']
+  published_at datetime [note: '发布时间']
+  tags varchar(255) [note: '文章标签，用逗号分隔的标签列表']
+}
+
+Table rumor_report {
+  id int [pk, increment, note: '主键ID']
+  title varchar(255) [not null, note: '谣言标题']
+  content text [not null, note: '谣言内容']
+  source varchar(255) [note: '谣言来源']
+  url varchar(500) [note: '谣言来源URL']
+  published_at datetime [note: '谣言发布时间']
+  created_at datetime [note: '系统内创建时间']
+  rumor_type varchar(50) [note: '谣言类型(如虚假信息、误导性信息等)']
+  rumor_probability float [note: '谣言概率评分']
+}
+
+Table article_clarification_association {
+  article_id int [not null, note: '辟谣文章ID，关联debunk_article表']
+  clarification_report_id int [not null, note: '澄清报告ID，关联clarification_report表']
+
+  indexes {
+    (article_id, clarification_report_id) [pk]
+    clarification_report_id
+  }
+}
+
+Table article_rumor_association {
+  article_id int [not null, note: '辟谣文章ID，关联debunk_article表']
+  rumor_report_id int [not null, note: '谣言报告ID，关联rumor_report表']
+
+  indexes {
+    (article_id, rumor_report_id) [pk]
+    rumor_report_id
+  }
+}
+
+Table debunk_content {
+  id int [pk, increment, note: '主键ID']
+  source varchar(50) [not null, note: '内容来源平台(如微博、微信等)']
+  content_id varchar(100) [unique, note: '原平台内容ID']
+  title varchar(500) [note: '内容标题']
+  content text [note: '内容正文']
+  author_id varchar(100) [note: '原作者ID']
+  author_name varchar(100) [note: '原作者名称']
+  author_verified boolean [note: '作者是否认证']
+  author_verified_type int [note: '作者认证类型']
+  author_verified_reason varchar(255) [note: '作者认证理由']
+  region varchar(100) [note: '地区']
+  attitudes_count int [note: '点赞/喜欢数量']
+  comments_count int [note: '评论数量']
+  reposts_count int [note: '转发/分享数量']
+  images text [note: '图片URLs，JSON格式']
+  link varchar(500) [note: '原内容链接']
+  publish_time varchar(50) [note: '发布时间']
+  created_at datetime [note: '系统内创建时间']
+  search_query varchar(255) [note: '用于收集该内容的搜索词']
+  status varchar(20) [note: '处理状态']
+  origin_content text [note: '原始内容，未经处理']
+}
+
+Table weibo_debunk {
+  id int [pk, increment, note: '主键ID']
+  source varchar(50) [note: '来源平台(微博)']
+  content text [not null, note: '微博内容']
+  weibo_mid_id varchar(50) [unique, note: '微博mid唯一标识']
+  weibo_user_id varchar(50) [note: '微博用户ID']
+  weibo_user_name varchar(100) [note: '微博用户名']
+  user_verified boolean [note: '用户是否认证']
+  user_verified_type int [note: '用户认证类型']
+  user_verified_reason varchar(255) [note: '用户认证理由']
+  region varchar(100) [note: '地区']
+  attitudes_count int [note: '点赞数']
+  comments_count int [note: '评论数']
+  reposts_count int [note: '转发数']
+  pics text [note: '图片URLs，JSON格式']
+  created_at datetime [note: '创建时间']
+  search_query varchar(255) [note: '搜索关键词']
+  status varchar(20) [note: '处理状态']
+}
+
+Table xinlang_debunk {
+  id int [pk, increment, note: '主键ID']
+  source varchar(50) [note: '来源平台(新浪)']
+  news_id varchar(100) [unique, note: '新闻ID']
+  data_id varchar(100) [note: '数据ID']
+  title varchar(500) [not null, note: '新闻标题']
+  source_name varchar(100) [note: '来源名称']
+  link varchar(500) [note: '新闻链接']
+  image_url varchar(500) [note: '图片URL']
+  category varchar(50) [note: '分类']
+  comment_id varchar(100) [note: '评论ID']
+  publish_time varchar(50) [note: '发布时间']
+  search_query varchar(255) [note: '搜索关键词']
+  created_at datetime [note: '创建时间']
+  status varchar(20) [note: '处理状态']
+}
+
+Table news {
+  id varchar(32) [pk, note: '新闻唯一标识']
+  url varchar(512) [not null, unique, note: '新闻原文URL']
+  title varchar(256) [not null, note: '新闻标题']
+  content text [not null, note: '新闻正文内容']
+  summary varchar(512) [note: '新闻摘要']
+  publish_date datetime [note: '发布日期']
+  author varchar(64) [note: '作者']
+  category varchar(64) [note: '新闻分类']
+  tags json [note: '标签，JSON格式']
+  source varchar(64) [note: '新闻来源(如人民日报、新华社等)']
+  source_type varchar(32) [not null, note: '来源类型(如官方媒体、自媒体等)']
+  media json [note: '媒体资源(图片、视频等)，JSON格式']
+  keyword_match float [note: '关键词匹配度']
+  recommendation_level int [note: '推荐级别']
+  crawl_time datetime [note: '爬取时间']
+  created_at datetime [note: '创建时间']
+  updated_at datetime [note: '更新时间']
+
+  indexes {
+    crawl_time
+    publish_date
+    source_type
+    category
+    title
+    author
+    source
+  }
+}
+
+Table user {
+  id int [pk, increment, note: '用户ID']
+  name varchar(80) [note: '用户真实姓名']
+  phone varchar(20) [note: '电话号码']
+  user_name varchar(20) [not null, unique, note: '用户名(登录名)']
+  password_hash varchar(128) [not null, note: '密码哈希值']
+  bio varchar(200) [note: '个人简介']
+  tags varchar(500) [note: '用户标签']
+  interests varchar(500) [note: '兴趣爱好']
+  avatar_url varchar(255) [note: '头像URL']
+  created_at datetime [note: '创建时间']
+  updated_at datetime [note: '更新时间']
+}
+
+Table roles {
+  id int [pk, increment, note: '角色ID']
+  name varchar(50) [not null, unique, note: '角色名称']
+  description varchar(255) [note: '角色描述']
+  created_at datetime [note: '创建时间']
+}
+
+Table user_roles {
+  id int [pk, increment, note: '主键ID']
+  user_id int [not null, note: '用户ID，关联user表']
+  role_id int [not null, note: '角色ID，关联roles表']
+  created_at datetime [note: '创建时间']
+
+  indexes {
+    role_id
+    user_id
+  }
+}
+
+Table messages {
+  id int [pk, increment, note: '消息ID']
+  sender_id int [not null, note: '消息发送者ID']
+  receiver_id int [not null, note: '消息接收者ID']
+  msg_type varchar(10) [not null, note: '消息类型:text/image/file']
+  content text [not null, note: '消息内容']
+  priority int [note: '优先级:0-普通,1-重要,2-紧急']
+  is_read boolean [note: '已读状态']
+  send_time datetime [not null, note: '消息发送时间']
+  read_time datetime [note: '消息阅读时间']
+  expire_time datetime [note: '消息过期时间']
+  title varchar(100) [not null, note: '消息标题']
+}
+
+Table wx_users {
+  id int [pk, increment, note: '主键ID']
+  openid varchar(64) [not null, unique, note: '微信openid']
+  unionid varchar(64) [unique, note: '微信unionid']
+  session_key varchar(128) [note: '微信会话密钥']
+  nickname varchar(64) [note: '用户昵称']
+  avatar_url varchar(512) [note: '头像URL']
+  gender smallint [note: '性别']
+  country varchar(64) [note: '国家']
+  province varchar(64) [note: '省份']
+  city varchar(64) [note: '城市']
+  phone varchar(32) [note: '手机号']
+  extra_data json [note: '额外信息，JSON格式']
+  is_active boolean [note: '是否活跃']
+  created_at datetime [note: '创建时间']
+  updated_at datetime [note: '更新时间']
+  last_login datetime [note: '最后登录时间']
+}
+
+Table reading_histories {
+  id int [pk, increment, note: '主键ID']
+  user_id int [not null, note: '用户ID，关联wx_users表']
+  article_id int [not null, note: '文章ID']
+  article_type varchar(20) [not null, note: '文章类型(如辟谣文章、谣言报告等)']
+  read_at datetime [note: '阅读时间']
+  read_duration int [note: '阅读时长(秒)']
+  is_completed boolean [note: '是否阅读完成']
+
+  indexes {
+    user_id
+  }
+}
+
+// 定义关系
+Ref: debunk_article.author_id > user.id
+Ref: article_clarification_association.article_id > debunk_article.id
+Ref: article_clarification_association.clarification_report_id > clarification_report.id
+Ref: article_rumor_association.article_id > debunk_article.id
+Ref: article_rumor_association.rumor_report_id > rumor_report.id
+Ref: user_roles.user_id > user.id
+Ref: user_roles.role_id > roles.id
+Ref: reading_histories.user_id > wx_users.id
+Ref: messages.sender_id > user.id
+Ref: messages.receiver_id > user.id

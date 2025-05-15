@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 - 辟谣管理系统</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="auth-container">
+      <h1 class="auth-title">FeastMeet</h1>
+      <h3 class="auth-subtitle">谣言粉碎机</h3>
+      
+      <div class="auth-card">
+        <form id="login-form" method="post" action="/auth/api/login" class="needs-validation" novalidate>
+          <div class="form-group">
+            <input type="text" class="form-control" id="username" name="username" placeholder="邮箱地址" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block">登录</button>
+          
+          <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-text">或使用邮箱登录</div>
+            <div class="divider-line"></div>
+          </div>
+          
+          <div class="social-login">
+            <div class="social-btn">@</div>
+            <div class="social-btn">消息</div>
+            <div class="social-btn">网页</div>
+          </div>
+        </form>
+        
+        <div class="auth-links mt-3">
+          <span>还没有账号？</span>
+          <a href="/auth/register">注册新账号</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html> 

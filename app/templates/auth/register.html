@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册 - 辟谣管理系统</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="auth-container">
+      <h1 class="auth-title">FeastMeet</h1>
+      <h3 class="auth-subtitle">谣言粉碎机</h3>
+      
+      <div class="auth-card">
+        <form id="register-form" method="post" action="/auth/api/register" class="needs-validation" novalidate>
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="姓名" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="手机号码" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" name="password" placeholder="密码" required minlength="6">
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block">注册新账号</button>
+        </form>
+        
+        <div class="auth-links mt-3">
+          <span>已有账号？</span>
+          <a href="/auth/login">立即登录</a>
+        </div>
+        
+        <div class="text-center mt-3">
+          <small>注册即表示您同意我们的</small>
+          <div>
+            <a href="#">服务条款</a> 和 <a href="#">隐私政策</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html> 
