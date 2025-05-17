@@ -35,7 +35,7 @@ load_dotenv()  # 如果 .env 在其他路径，使用 load_dotenv('path/to/.env'
 
 # ========== 初始化应用 ==========
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://truetuardian:truetuardian123456@192.168.1.114/truetuardian'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://truetuardian:truetuardian123456@localhost/truetuardian'
 # 修改后的数据库引擎配置
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_recycle': 290,

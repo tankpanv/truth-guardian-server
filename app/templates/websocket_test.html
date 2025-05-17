@@ -53,7 +53,7 @@
             token = document.getElementById('token').value;
             
             // 连接WebSocket
-            socket = io('http://192.168.1.114:5005', {
+            socket = io('http://localhost:5005', {
                 extraHeaders: {
                     Authorization: `Bearer ${token}`
                 }
