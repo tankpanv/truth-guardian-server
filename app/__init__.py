@@ -197,8 +197,11 @@ def create_app(config_name=None):
         app.register_blueprint(visualization_bp, url_prefix='/api')
         
         from app.routes.migration import migration_bp
-        app.register_blueprint(migration_bp, url_prefix='/api/migration')        
+        app.register_blueprint(migration_bp, url_prefix='/api/migration')
         
+        # 注册用户管理蓝图
+        from app.routes.user_management import user_management_bp
+        app.register_blueprint(user_management_bp)
 
         # 注册爬虫数据蓝图
         from app.routes.spider_data import spider_bp
