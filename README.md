@@ -1,7 +1,24 @@
 ## 真相卫士系统 - 技术文档
 
 真相卫士系统是一个集信息采集、分析、发布于一体的辟谣平台，利用先进的爬虫技术和数据处理算法，帮助用户识别和澄清互联网上的虚假信息。
+# 向所有用户推送
+python send_message.py --all-users --now
 
+#python send_message.py --username user1 --now --limit 5
+# python send_message.py  --now
+# 向指定用户推送
+#python send_message.py --username user1 --now
+
+
+
+# 向订阅用户推送（默认）
+#python send_message.py --now
+
+# 启动定时推送给指定用户
+#python send_message.py --username user1
+
+# 启动定时推送给所有用户
+#python send_message.py --all-users
 ### 技术栈
 
 #### 后端框架与库
