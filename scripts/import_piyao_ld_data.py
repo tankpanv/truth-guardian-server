@@ -13,7 +13,7 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, project_root)
 
 from app import create_app, db
-from app.models.debunk import DebunkContent
+from app.models.debunk import DebunkContent, DebunkArticle
 
 def import_piyao_ld_json():
     """导入辟谣 ld.htm 页面JSON数据到数据库"""
@@ -54,32 +54,31 @@ def import_piyao_ld_json():
                         skip_count += 1
                         continue
                     
-                    # 检查是否已存在（基于标题和URL）
-                    existing = DebunkContent.query.filter_by(
-                        title=title,
-                        source='piyao.org.cn'
+                    # 检查是否已存在（基于标题）
+                    existing = DebunkArticle.query.filter_by(
+                        title=title
                     ).first()
-                    
+
                     if existing:
                         print(f"记录 {index}: 已存在 - {title[:50]}...")
                         skip_count += 1
                         continue
-                    
+
                     # 提取发布时间和来源信息
                     publish_time = item.get('publish_time', '')
                     source_info = item.get('source', '辟谣平台')
-                    
-                    # 创建新记录
-                    debunk_content = DebunkContent(
+
+                    # 创建新记录 - 使用 DebunkArticle 模型
+                    debunk_article = DebunkArticle(
                         title=title,
                         content=content,
+                        summary=content[:200] + '...' if len(content) > 200 else content,  # 生成摘要
                         source='piyao.org.cn',
-                        author_name=source_info,
-                        link=url,
-                        region='全国',
-                        search_query='辟谣',
+                        author_id=1,  # 使用默认作者ID
                         status='published',
-                        created_at=datetime.now()
+                        created_at=datetime.now(),
+                        published_at=datetime.now(),  # 设置发布时间为当前时间
+                        tags='辟谣,官方'  # 添加默认标签
                     )
                     
                     # 如果有发布时间信息，尝试解析
@@ -90,8 +89,8 @@ def import_piyao_ld_json():
                             pass
                         except:
                             pass
-                    
-                    db.session.add(debunk_content)
+
+                    db.session.add(debunk_article)
                     success_count += 1
                     print(f"记录 {index}: 成功添加 - {title[:50]}...")
                     

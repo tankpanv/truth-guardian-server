@@ -295,3 +295,257 @@
 2025-07-20 00:11:07,873 - spider.piyao_ld_spider - INFO - 结果已保存到 piyao_ld_results.json
 2025-07-20 00:11:07,874 - spider.piyao_ld_spider - INFO - 摘要已保存到 piyao_ld_summary.json
 2025-07-20 00:11:07,874 - root - INFO - 成功爬取 20 篇文章
+2025-07-20 00:40:27,468 - spider.piyao_ld_spider - INFO - 开始爬取辟谣网站 ld.htm 页面
+2025-07-20 00:40:27,468 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/ld.htm
+2025-07-20 00:40:28,406 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/ld.htm, 状态码: 200
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 找到 20 篇文章链接
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 温州公安依法查处一起编造虚假警情案 - https://www.piyao.org.cn/20250717/ef39a204545b491c8d12d4c1def14519/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 武汉警方公布打击网络谣言3起典型案例 - https://www.piyao.org.cn/20250717/7858bc2c77234f64bd897da8ce05a493/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 北京第二外国语学院发布郑重声明 - https://www.piyao.org.cn/20250718/10840b02ee3e430389edee91151e8b3c/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: “倒挂控水法”能救溺水者？ - https://www.piyao.org.cn/20250717/5c9a97cd456042c7b851540753059d55/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 女子造谣单位内有人热死被依法处罚 - https://www.piyao.org.cn/20250718/962403c6e7ba409195056e2d346a9329/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 山西一网民造谣“辖区有人贩子出没”被处罚 - https://www.piyao.org.cn/20250717/5bc195538c36447aa06c5f3a1757aad1/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 防晒衣面料添加艾草精华可抗菌、驱蚊？ - https://www.piyao.org.cn/20250717/1eb06d418d5f48c9b79d4962d841887a/c.html
+2025-07-20 00:40:28,417 - spider.piyao_ld_spider - INFO - 解析到文章: 2025四川高校录取通知书认准这些签发人 - https://www.piyao.org.cn/20250716/7834a723479649459dcbd7a4f92e9dae/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 四川发洪水竹上还有两个人？ - https://www.piyao.org.cn/20250716/25cf3e75595f4329aced5b043538cf7d/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 西安警方通报5起网络谣言典型案例 - https://www.piyao.org.cn/20250717/acba389c4f2d4129bc5e008d6499872e/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 内蒙古乌海公安提醒！ - https://www.piyao.org.cn/20250716/752a3258801e4804abfa71b47f4b8147/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 上海清算所郑重声明 - https://www.piyao.org.cn/20250716/e3e4d992e4294d9588a3c45972d7673b/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 北京有水龙头流绿水？真相是...... - https://www.piyao.org.cn/20250716/3db7a852e92d4208b6ec1f3ce13ddb64/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 夏季减重，出汗越多瘦得越快？ - https://www.piyao.org.cn/20250715/10d4465e017b4df191f2977cb0252f09/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 湖南吉首一网民发布虚假谣言被约谈 - https://www.piyao.org.cn/20250715/4bbd7ec1858c4973bbca823e9fc41bde/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 辟谣！网传“河南叶县一醉汉持椅殴打男童”为不实信息！ - https://www.piyao.org.cn/20250715/21cf3690941b4d0fa0c9b69f98fa2e44/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 网传太阳能板释放有害电磁辐射？谣言！ - https://www.piyao.org.cn/20250711/bd023518677844abb2d477f29e0a2eaf/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 上门服务激活医保码？四川医保局：假的！ - https://www.piyao.org.cn/20250711/8eceaca4a2b74d608661d92611060df9/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 河南平顶山市教育体育局：这些信息都是假的！ - https://www.piyao.org.cn/20250711/5d2e664cb89b40d6b9ee8844d9b94550/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 解析到文章: 网传河南沁阳“八一水库淹死人了”系不实信息！ - https://www.piyao.org.cn/20250711/c2557ac66cf24bd7bb0defb172a597ce/c.html
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 正在爬取第 1/20 篇文章: 温州公安依法查处一起编造虚假警情案
+2025-07-20 00:40:28,418 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/ef39a204545b491c8d12d4c1def14519/c.html
+2025-07-20 00:40:29,358 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/ef39a204545b491c8d12d4c1def14519/c.html, 状态码: 200
+2025-07-20 00:40:29,364 - spider.piyao_ld_spider - INFO - 获取到标题: 为博流量编造谣言，温州公安依法查处一起编造虚假警情案
+2025-07-20 00:40:29,365 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1068
+2025-07-20 00:40:31,370 - spider.piyao_ld_spider - INFO - 正在爬取第 2/20 篇文章: 武汉警方公布打击网络谣言3起典型案例
+2025-07-20 00:40:31,371 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/7858bc2c77234f64bd897da8ce05a493/c.html
+2025-07-20 00:40:32,462 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/7858bc2c77234f64bd897da8ce05a493/c.html, 状态码: 200
+2025-07-20 00:40:32,471 - spider.piyao_ld_spider - INFO - 获取到标题: 武汉警方公布打击网络谣言3起典型案例
+2025-07-20 00:40:32,473 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1334
+2025-07-20 00:40:34,480 - spider.piyao_ld_spider - INFO - 正在爬取第 3/20 篇文章: 北京第二外国语学院发布郑重声明
+2025-07-20 00:40:34,480 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250718/10840b02ee3e430389edee91151e8b3c/c.html
+2025-07-20 00:40:35,187 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250718/10840b02ee3e430389edee91151e8b3c/c.html, 状态码: 200
+2025-07-20 00:40:35,195 - spider.piyao_ld_spider - INFO - 获取到标题: 有不法分子冒充招生办发布虚假信息，北京第二外国语学院发布郑重声明
+2025-07-20 00:40:35,196 - spider.piyao_ld_spider - INFO - 获取到内容长度: 576
+2025-07-20 00:40:37,201 - spider.piyao_ld_spider - INFO - 正在爬取第 4/20 篇文章: “倒挂控水法”能救溺水者？
+2025-07-20 00:40:37,201 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/5c9a97cd456042c7b851540753059d55/c.html
+2025-07-20 00:40:38,151 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/5c9a97cd456042c7b851540753059d55/c.html, 状态码: 200
+2025-07-20 00:40:38,157 - spider.piyao_ld_spider - INFO - 获取到标题: “倒挂控水法”能救溺水者？
+2025-07-20 00:40:38,157 - spider.piyao_ld_spider - INFO - 获取到内容长度: 4
+2025-07-20 00:40:40,162 - spider.piyao_ld_spider - INFO - 正在爬取第 5/20 篇文章: 女子造谣单位内有人热死被依法处罚
+2025-07-20 00:40:40,162 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250718/962403c6e7ba409195056e2d346a9329/c.html
+2025-07-20 00:40:41,034 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250718/962403c6e7ba409195056e2d346a9329/c.html, 状态码: 200
+2025-07-20 00:40:41,039 - spider.piyao_ld_spider - INFO - 获取到标题: 女子造谣单位内有人热死被依法处罚
+2025-07-20 00:40:41,040 - spider.piyao_ld_spider - INFO - 获取到内容长度: 228
+2025-07-20 00:40:43,045 - spider.piyao_ld_spider - INFO - 正在爬取第 6/20 篇文章: 山西一网民造谣“辖区有人贩子出没”被处罚
+2025-07-20 00:40:43,045 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/5bc195538c36447aa06c5f3a1757aad1/c.html
+2025-07-20 00:40:43,907 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/5bc195538c36447aa06c5f3a1757aad1/c.html, 状态码: 200
+2025-07-20 00:40:43,913 - spider.piyao_ld_spider - INFO - 获取到标题: 未核实即发布！山西晋中祁县一网民造谣“辖区有人贩子出没”被处罚
+2025-07-20 00:40:43,914 - spider.piyao_ld_spider - INFO - 获取到内容长度: 788
+2025-07-20 00:40:45,920 - spider.piyao_ld_spider - INFO - 正在爬取第 7/20 篇文章: 防晒衣面料添加艾草精华可抗菌、驱蚊？
+2025-07-20 00:40:45,920 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/1eb06d418d5f48c9b79d4962d841887a/c.html
+2025-07-20 00:40:46,644 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/1eb06d418d5f48c9b79d4962d841887a/c.html, 状态码: 200
+2025-07-20 00:40:46,652 - spider.piyao_ld_spider - INFO - 获取到标题: 防晒衣面料添加艾草精华可抗菌、驱蚊？中消协：警惕营销话术套路
+2025-07-20 00:40:46,653 - spider.piyao_ld_spider - INFO - 获取到内容长度: 3070
+2025-07-20 00:40:48,658 - spider.piyao_ld_spider - INFO - 正在爬取第 8/20 篇文章: 2025四川高校录取通知书认准这些签发人
+2025-07-20 00:40:48,658 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/7834a723479649459dcbd7a4f92e9dae/c.html
+2025-07-20 00:40:49,515 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/7834a723479649459dcbd7a4f92e9dae/c.html, 状态码: 200
+2025-07-20 00:40:49,522 - spider.piyao_ld_spider - INFO - 获取到标题: 考生注意！2025四川高校录取通知书认准这些签发人 不是他们签的都是假的
+2025-07-20 00:40:49,522 - spider.piyao_ld_spider - INFO - 获取到内容长度: 530
+2025-07-20 00:40:51,528 - spider.piyao_ld_spider - INFO - 正在爬取第 9/20 篇文章: 四川发洪水竹上还有两个人？
+2025-07-20 00:40:51,528 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/25cf3e75595f4329aced5b043538cf7d/c.html
+2025-07-20 00:40:52,289 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/25cf3e75595f4329aced5b043538cf7d/c.html, 状态码: 200
+2025-07-20 00:40:52,295 - spider.piyao_ld_spider - INFO - 获取到标题: 四川发洪水竹上还有两个人？官方回应
+2025-07-20 00:40:52,296 - spider.piyao_ld_spider - INFO - 获取到内容长度: 430
+2025-07-20 00:40:54,300 - spider.piyao_ld_spider - INFO - 正在爬取第 10/20 篇文章: 西安警方通报5起网络谣言典型案例
+2025-07-20 00:40:54,301 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/acba389c4f2d4129bc5e008d6499872e/c.html
+2025-07-20 00:40:54,992 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/acba389c4f2d4129bc5e008d6499872e/c.html, 状态码: 200
+2025-07-20 00:40:55,000 - spider.piyao_ld_spider - INFO - 获取到标题: 西安警方通报5起网络谣言典型案例
+2025-07-20 00:40:55,001 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1880
+2025-07-20 00:40:57,006 - spider.piyao_ld_spider - INFO - 正在爬取第 11/20 篇文章: 内蒙古乌海公安提醒！
+2025-07-20 00:40:57,006 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/752a3258801e4804abfa71b47f4b8147/c.html
+2025-07-20 00:40:57,719 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/752a3258801e4804abfa71b47f4b8147/c.html, 状态码: 200
+2025-07-20 00:40:57,725 - spider.piyao_ld_spider - INFO - 获取到标题: 内蒙古乌海公安提醒：警惕假借“税收抽查”名义实施诈骗
+2025-07-20 00:40:57,725 - spider.piyao_ld_spider - INFO - 获取到内容长度: 486
+2025-07-20 00:40:59,730 - spider.piyao_ld_spider - INFO - 正在爬取第 12/20 篇文章: 上海清算所郑重声明
+2025-07-20 00:40:59,730 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/e3e4d992e4294d9588a3c45972d7673b/c.html
+2025-07-20 00:41:00,499 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/e3e4d992e4294d9588a3c45972d7673b/c.html, 状态码: 200
+2025-07-20 00:41:00,505 - spider.piyao_ld_spider - INFO - 获取到标题: 上海清算所郑重声明
+2025-07-20 00:41:00,506 - spider.piyao_ld_spider - INFO - 获取到内容长度: 5
+2025-07-20 00:41:02,511 - spider.piyao_ld_spider - INFO - 正在爬取第 13/20 篇文章: 北京有水龙头流绿水？真相是......
+2025-07-20 00:41:02,511 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/3db7a852e92d4208b6ec1f3ce13ddb64/c.html
+2025-07-20 00:41:03,261 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/3db7a852e92d4208b6ec1f3ce13ddb64/c.html, 状态码: 200
+2025-07-20 00:41:03,267 - spider.piyao_ld_spider - INFO - 获取到标题: 北京有水龙头流绿水？实为“洁厕宝水”倒灌
+2025-07-20 00:41:03,268 - spider.piyao_ld_spider - INFO - 获取到内容长度: 289
+2025-07-20 00:41:05,272 - spider.piyao_ld_spider - INFO - 正在爬取第 14/20 篇文章: 夏季减重，出汗越多瘦得越快？
+2025-07-20 00:41:05,272 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250715/10d4465e017b4df191f2977cb0252f09/c.html
+2025-07-20 00:41:06,176 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250715/10d4465e017b4df191f2977cb0252f09/c.html, 状态码: 200
+2025-07-20 00:41:06,182 - spider.piyao_ld_spider - INFO - 获取到标题: 夏季减重，出汗越多瘦得越快？
+2025-07-20 00:41:06,183 - spider.piyao_ld_spider - INFO - 获取到内容长度: 4
+2025-07-20 00:41:08,188 - spider.piyao_ld_spider - INFO - 正在爬取第 15/20 篇文章: 湖南吉首一网民发布虚假谣言被约谈
+2025-07-20 00:41:08,188 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250715/4bbd7ec1858c4973bbca823e9fc41bde/c.html
+2025-07-20 00:41:09,049 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250715/4bbd7ec1858c4973bbca823e9fc41bde/c.html, 状态码: 200
+2025-07-20 00:41:09,056 - spider.piyao_ld_spider - INFO - 获取到标题: 湖南吉首一网民发布虚假谣言被约谈
+2025-07-20 00:41:09,056 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1042
+2025-07-20 00:41:11,061 - spider.piyao_ld_spider - INFO - 正在爬取第 16/20 篇文章: 辟谣！网传“河南叶县一醉汉持椅殴打男童”为不实信息！
+2025-07-20 00:41:11,061 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250715/21cf3690941b4d0fa0c9b69f98fa2e44/c.html
+2025-07-20 00:41:11,932 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250715/21cf3690941b4d0fa0c9b69f98fa2e44/c.html, 状态码: 200
+2025-07-20 00:41:11,938 - spider.piyao_ld_spider - INFO - 获取到标题: 辟谣！网传“河南叶县一醉汉持椅殴打男童”为不实信息！
+2025-07-20 00:41:11,938 - spider.piyao_ld_spider - INFO - 获取到内容长度: 811
+2025-07-20 00:41:13,942 - spider.piyao_ld_spider - INFO - 正在爬取第 17/20 篇文章: 网传太阳能板释放有害电磁辐射？谣言！
+2025-07-20 00:41:13,942 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/bd023518677844abb2d477f29e0a2eaf/c.html
+2025-07-20 00:41:14,805 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/bd023518677844abb2d477f29e0a2eaf/c.html, 状态码: 200
+2025-07-20 00:41:14,813 - spider.piyao_ld_spider - INFO - 获取到标题: 网传太阳能板释放有害电磁辐射？谣言！
+2025-07-20 00:41:14,814 - spider.piyao_ld_spider - INFO - 获取到内容长度: 2221
+2025-07-20 00:41:16,818 - spider.piyao_ld_spider - INFO - 正在爬取第 18/20 篇文章: 上门服务激活医保码？四川医保局：假的！
+2025-07-20 00:41:16,818 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/8eceaca4a2b74d608661d92611060df9/c.html
+2025-07-20 00:41:17,595 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/8eceaca4a2b74d608661d92611060df9/c.html, 状态码: 200
+2025-07-20 00:41:17,601 - spider.piyao_ld_spider - INFO - 获取到标题: 上门服务激活医保码？四川医保局：假的！
+2025-07-20 00:41:17,602 - spider.piyao_ld_spider - INFO - 获取到内容长度: 86
+2025-07-20 00:41:19,606 - spider.piyao_ld_spider - INFO - 正在爬取第 19/20 篇文章: 河南平顶山市教育体育局：这些信息都是假的！
+2025-07-20 00:41:19,606 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/5d2e664cb89b40d6b9ee8844d9b94550/c.html
+2025-07-20 00:41:20,404 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/5d2e664cb89b40d6b9ee8844d9b94550/c.html, 状态码: 200
+2025-07-20 00:41:20,409 - spider.piyao_ld_spider - INFO - 获取到标题: 河南平顶山市教育体育局：这些信息都是假的！
+2025-07-20 00:41:20,410 - spider.piyao_ld_spider - INFO - 获取到内容长度: 808
+2025-07-20 00:41:22,414 - spider.piyao_ld_spider - INFO - 正在爬取第 20/20 篇文章: 网传河南沁阳“八一水库淹死人了”系不实信息！
+2025-07-20 00:41:22,414 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/c2557ac66cf24bd7bb0defb172a597ce/c.html
+2025-07-20 00:41:23,176 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/c2557ac66cf24bd7bb0defb172a597ce/c.html, 状态码: 200
+2025-07-20 00:41:23,183 - spider.piyao_ld_spider - INFO - 获取到标题: 辟谣！网传河南沁阳“八一水库淹死人了”系不实信息！
+2025-07-20 00:41:23,183 - spider.piyao_ld_spider - INFO - 获取到内容长度: 361
+2025-07-20 00:41:25,190 - spider.piyao_ld_spider - INFO - 结果已保存到 piyao_ld_results.json
+2025-07-20 00:41:25,190 - spider.piyao_ld_spider - INFO - 摘要已保存到 piyao_ld_summary.json
+2025-07-20 00:41:25,190 - root - INFO - 成功爬取 20 篇文章
+2025-07-20 00:44:52,816 - spider.piyao_ld_spider - INFO - 开始爬取辟谣网站 ld.htm 页面
+2025-07-20 00:44:52,816 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/ld.htm
+2025-07-20 00:44:53,724 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/ld.htm, 状态码: 200
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 找到 20 篇文章链接
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 温州公安依法查处一起编造虚假警情案 - https://www.piyao.org.cn/20250717/ef39a204545b491c8d12d4c1def14519/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 武汉警方公布打击网络谣言3起典型案例 - https://www.piyao.org.cn/20250717/7858bc2c77234f64bd897da8ce05a493/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 北京第二外国语学院发布郑重声明 - https://www.piyao.org.cn/20250718/10840b02ee3e430389edee91151e8b3c/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: “倒挂控水法”能救溺水者？ - https://www.piyao.org.cn/20250717/5c9a97cd456042c7b851540753059d55/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 女子造谣单位内有人热死被依法处罚 - https://www.piyao.org.cn/20250718/962403c6e7ba409195056e2d346a9329/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 山西一网民造谣“辖区有人贩子出没”被处罚 - https://www.piyao.org.cn/20250717/5bc195538c36447aa06c5f3a1757aad1/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 防晒衣面料添加艾草精华可抗菌、驱蚊？ - https://www.piyao.org.cn/20250717/1eb06d418d5f48c9b79d4962d841887a/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 2025四川高校录取通知书认准这些签发人 - https://www.piyao.org.cn/20250716/7834a723479649459dcbd7a4f92e9dae/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 四川发洪水竹上还有两个人？ - https://www.piyao.org.cn/20250716/25cf3e75595f4329aced5b043538cf7d/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 西安警方通报5起网络谣言典型案例 - https://www.piyao.org.cn/20250717/acba389c4f2d4129bc5e008d6499872e/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 内蒙古乌海公安提醒！ - https://www.piyao.org.cn/20250716/752a3258801e4804abfa71b47f4b8147/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 上海清算所郑重声明 - https://www.piyao.org.cn/20250716/e3e4d992e4294d9588a3c45972d7673b/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 北京有水龙头流绿水？真相是...... - https://www.piyao.org.cn/20250716/3db7a852e92d4208b6ec1f3ce13ddb64/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 夏季减重，出汗越多瘦得越快？ - https://www.piyao.org.cn/20250715/10d4465e017b4df191f2977cb0252f09/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 湖南吉首一网民发布虚假谣言被约谈 - https://www.piyao.org.cn/20250715/4bbd7ec1858c4973bbca823e9fc41bde/c.html
+2025-07-20 00:44:53,736 - spider.piyao_ld_spider - INFO - 解析到文章: 辟谣！网传“河南叶县一醉汉持椅殴打男童”为不实信息！ - https://www.piyao.org.cn/20250715/21cf3690941b4d0fa0c9b69f98fa2e44/c.html
+2025-07-20 00:44:53,737 - spider.piyao_ld_spider - INFO - 解析到文章: 网传太阳能板释放有害电磁辐射？谣言！ - https://www.piyao.org.cn/20250711/bd023518677844abb2d477f29e0a2eaf/c.html
+2025-07-20 00:44:53,737 - spider.piyao_ld_spider - INFO - 解析到文章: 上门服务激活医保码？四川医保局：假的！ - https://www.piyao.org.cn/20250711/8eceaca4a2b74d608661d92611060df9/c.html
+2025-07-20 00:44:53,737 - spider.piyao_ld_spider - INFO - 解析到文章: 河南平顶山市教育体育局：这些信息都是假的！ - https://www.piyao.org.cn/20250711/5d2e664cb89b40d6b9ee8844d9b94550/c.html
+2025-07-20 00:44:53,737 - spider.piyao_ld_spider - INFO - 解析到文章: 网传河南沁阳“八一水库淹死人了”系不实信息！ - https://www.piyao.org.cn/20250711/c2557ac66cf24bd7bb0defb172a597ce/c.html
+2025-07-20 00:44:53,737 - spider.piyao_ld_spider - INFO - 正在爬取第 1/20 篇文章: 温州公安依法查处一起编造虚假警情案
+2025-07-20 00:44:53,737 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/ef39a204545b491c8d12d4c1def14519/c.html
+2025-07-20 00:44:55,666 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/ef39a204545b491c8d12d4c1def14519/c.html, 状态码: 200
+2025-07-20 00:44:55,673 - spider.piyao_ld_spider - INFO - 获取到标题: 为博流量编造谣言，温州公安依法查处一起编造虚假警情案
+2025-07-20 00:44:55,674 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1068
+2025-07-20 00:44:57,678 - spider.piyao_ld_spider - INFO - 正在爬取第 2/20 篇文章: 武汉警方公布打击网络谣言3起典型案例
+2025-07-20 00:44:57,679 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/7858bc2c77234f64bd897da8ce05a493/c.html
+2025-07-20 00:44:58,601 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/7858bc2c77234f64bd897da8ce05a493/c.html, 状态码: 200
+2025-07-20 00:44:58,609 - spider.piyao_ld_spider - INFO - 获取到标题: 武汉警方公布打击网络谣言3起典型案例
+2025-07-20 00:44:58,610 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1334
+2025-07-20 00:45:00,616 - spider.piyao_ld_spider - INFO - 正在爬取第 3/20 篇文章: 北京第二外国语学院发布郑重声明
+2025-07-20 00:45:00,616 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250718/10840b02ee3e430389edee91151e8b3c/c.html
+2025-07-20 00:45:01,455 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250718/10840b02ee3e430389edee91151e8b3c/c.html, 状态码: 200
+2025-07-20 00:45:01,460 - spider.piyao_ld_spider - INFO - 获取到标题: 有不法分子冒充招生办发布虚假信息，北京第二外国语学院发布郑重声明
+2025-07-20 00:45:01,460 - spider.piyao_ld_spider - INFO - 获取到内容长度: 576
+2025-07-20 00:45:03,464 - spider.piyao_ld_spider - INFO - 正在爬取第 4/20 篇文章: “倒挂控水法”能救溺水者？
+2025-07-20 00:45:03,464 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/5c9a97cd456042c7b851540753059d55/c.html
+2025-07-20 00:45:04,497 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/5c9a97cd456042c7b851540753059d55/c.html, 状态码: 200
+2025-07-20 00:45:04,503 - spider.piyao_ld_spider - INFO - 获取到标题: “倒挂控水法”能救溺水者？
+2025-07-20 00:45:04,504 - spider.piyao_ld_spider - INFO - 获取到内容长度: 4
+2025-07-20 00:45:06,509 - spider.piyao_ld_spider - INFO - 正在爬取第 5/20 篇文章: 女子造谣单位内有人热死被依法处罚
+2025-07-20 00:45:06,509 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250718/962403c6e7ba409195056e2d346a9329/c.html
+2025-07-20 00:45:07,354 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250718/962403c6e7ba409195056e2d346a9329/c.html, 状态码: 200
+2025-07-20 00:45:07,360 - spider.piyao_ld_spider - INFO - 获取到标题: 女子造谣单位内有人热死被依法处罚
+2025-07-20 00:45:07,360 - spider.piyao_ld_spider - INFO - 获取到内容长度: 228
+2025-07-20 00:45:09,365 - spider.piyao_ld_spider - INFO - 正在爬取第 6/20 篇文章: 山西一网民造谣“辖区有人贩子出没”被处罚
+2025-07-20 00:45:09,365 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/5bc195538c36447aa06c5f3a1757aad1/c.html
+2025-07-20 00:45:10,416 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/5bc195538c36447aa06c5f3a1757aad1/c.html, 状态码: 200
+2025-07-20 00:45:10,422 - spider.piyao_ld_spider - INFO - 获取到标题: 未核实即发布！山西晋中祁县一网民造谣“辖区有人贩子出没”被处罚
+2025-07-20 00:45:10,423 - spider.piyao_ld_spider - INFO - 获取到内容长度: 788
+2025-07-20 00:45:12,426 - spider.piyao_ld_spider - INFO - 正在爬取第 7/20 篇文章: 防晒衣面料添加艾草精华可抗菌、驱蚊？
+2025-07-20 00:45:12,426 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/1eb06d418d5f48c9b79d4962d841887a/c.html
+2025-07-20 00:45:13,376 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/1eb06d418d5f48c9b79d4962d841887a/c.html, 状态码: 200
+2025-07-20 00:45:13,384 - spider.piyao_ld_spider - INFO - 获取到标题: 防晒衣面料添加艾草精华可抗菌、驱蚊？中消协：警惕营销话术套路
+2025-07-20 00:45:13,385 - spider.piyao_ld_spider - INFO - 获取到内容长度: 3070
+2025-07-20 00:45:15,390 - spider.piyao_ld_spider - INFO - 正在爬取第 8/20 篇文章: 2025四川高校录取通知书认准这些签发人
+2025-07-20 00:45:15,390 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/7834a723479649459dcbd7a4f92e9dae/c.html
+2025-07-20 00:45:16,342 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/7834a723479649459dcbd7a4f92e9dae/c.html, 状态码: 200
+2025-07-20 00:45:16,348 - spider.piyao_ld_spider - INFO - 获取到标题: 考生注意！2025四川高校录取通知书认准这些签发人 不是他们签的都是假的
+2025-07-20 00:45:16,349 - spider.piyao_ld_spider - INFO - 获取到内容长度: 530
+2025-07-20 00:45:18,353 - spider.piyao_ld_spider - INFO - 正在爬取第 9/20 篇文章: 四川发洪水竹上还有两个人？
+2025-07-20 00:45:18,353 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/25cf3e75595f4329aced5b043538cf7d/c.html
+2025-07-20 00:45:19,267 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/25cf3e75595f4329aced5b043538cf7d/c.html, 状态码: 200
+2025-07-20 00:45:19,274 - spider.piyao_ld_spider - INFO - 获取到标题: 四川发洪水竹上还有两个人？官方回应
+2025-07-20 00:45:19,275 - spider.piyao_ld_spider - INFO - 获取到内容长度: 430
+2025-07-20 00:45:21,280 - spider.piyao_ld_spider - INFO - 正在爬取第 10/20 篇文章: 西安警方通报5起网络谣言典型案例
+2025-07-20 00:45:21,280 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250717/acba389c4f2d4129bc5e008d6499872e/c.html
+2025-07-20 00:45:22,248 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250717/acba389c4f2d4129bc5e008d6499872e/c.html, 状态码: 200
+2025-07-20 00:45:22,254 - spider.piyao_ld_spider - INFO - 获取到标题: 西安警方通报5起网络谣言典型案例
+2025-07-20 00:45:22,255 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1880
+2025-07-20 00:45:24,260 - spider.piyao_ld_spider - INFO - 正在爬取第 11/20 篇文章: 内蒙古乌海公安提醒！
+2025-07-20 00:45:24,260 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/752a3258801e4804abfa71b47f4b8147/c.html
+2025-07-20 00:45:25,095 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/752a3258801e4804abfa71b47f4b8147/c.html, 状态码: 200
+2025-07-20 00:45:25,103 - spider.piyao_ld_spider - INFO - 获取到标题: 内蒙古乌海公安提醒：警惕假借“税收抽查”名义实施诈骗
+2025-07-20 00:45:25,104 - spider.piyao_ld_spider - INFO - 获取到内容长度: 486
+2025-07-20 00:45:27,110 - spider.piyao_ld_spider - INFO - 正在爬取第 12/20 篇文章: 上海清算所郑重声明
+2025-07-20 00:45:27,110 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/e3e4d992e4294d9588a3c45972d7673b/c.html
+2025-07-20 00:45:28,008 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/e3e4d992e4294d9588a3c45972d7673b/c.html, 状态码: 200
+2025-07-20 00:45:28,014 - spider.piyao_ld_spider - INFO - 获取到标题: 上海清算所郑重声明
+2025-07-20 00:45:28,015 - spider.piyao_ld_spider - INFO - 获取到内容长度: 5
+2025-07-20 00:45:30,020 - spider.piyao_ld_spider - INFO - 正在爬取第 13/20 篇文章: 北京有水龙头流绿水？真相是......
+2025-07-20 00:45:30,020 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250716/3db7a852e92d4208b6ec1f3ce13ddb64/c.html
+2025-07-20 00:45:30,870 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250716/3db7a852e92d4208b6ec1f3ce13ddb64/c.html, 状态码: 200
+2025-07-20 00:45:30,874 - spider.piyao_ld_spider - INFO - 获取到标题: 北京有水龙头流绿水？实为“洁厕宝水”倒灌
+2025-07-20 00:45:30,875 - spider.piyao_ld_spider - INFO - 获取到内容长度: 289
+2025-07-20 00:45:32,878 - spider.piyao_ld_spider - INFO - 正在爬取第 14/20 篇文章: 夏季减重，出汗越多瘦得越快？
+2025-07-20 00:45:32,879 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250715/10d4465e017b4df191f2977cb0252f09/c.html
+2025-07-20 00:45:33,741 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250715/10d4465e017b4df191f2977cb0252f09/c.html, 状态码: 200
+2025-07-20 00:45:33,747 - spider.piyao_ld_spider - INFO - 获取到标题: 夏季减重，出汗越多瘦得越快？
+2025-07-20 00:45:33,748 - spider.piyao_ld_spider - INFO - 获取到内容长度: 4
+2025-07-20 00:45:35,752 - spider.piyao_ld_spider - INFO - 正在爬取第 15/20 篇文章: 湖南吉首一网民发布虚假谣言被约谈
+2025-07-20 00:45:35,752 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250715/4bbd7ec1858c4973bbca823e9fc41bde/c.html
+2025-07-20 00:45:36,696 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250715/4bbd7ec1858c4973bbca823e9fc41bde/c.html, 状态码: 200
+2025-07-20 00:45:36,702 - spider.piyao_ld_spider - INFO - 获取到标题: 湖南吉首一网民发布虚假谣言被约谈
+2025-07-20 00:45:36,703 - spider.piyao_ld_spider - INFO - 获取到内容长度: 1042
+2025-07-20 00:45:38,709 - spider.piyao_ld_spider - INFO - 正在爬取第 16/20 篇文章: 辟谣！网传“河南叶县一醉汉持椅殴打男童”为不实信息！
+2025-07-20 00:45:38,709 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250715/21cf3690941b4d0fa0c9b69f98fa2e44/c.html
+2025-07-20 00:45:39,704 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250715/21cf3690941b4d0fa0c9b69f98fa2e44/c.html, 状态码: 200
+2025-07-20 00:45:39,710 - spider.piyao_ld_spider - INFO - 获取到标题: 辟谣！网传“河南叶县一醉汉持椅殴打男童”为不实信息！
+2025-07-20 00:45:39,711 - spider.piyao_ld_spider - INFO - 获取到内容长度: 811
+2025-07-20 00:45:41,716 - spider.piyao_ld_spider - INFO - 正在爬取第 17/20 篇文章: 网传太阳能板释放有害电磁辐射？谣言！
+2025-07-20 00:45:41,717 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/bd023518677844abb2d477f29e0a2eaf/c.html
+2025-07-20 00:45:42,842 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/bd023518677844abb2d477f29e0a2eaf/c.html, 状态码: 200
+2025-07-20 00:45:42,850 - spider.piyao_ld_spider - INFO - 获取到标题: 网传太阳能板释放有害电磁辐射？谣言！
+2025-07-20 00:45:42,850 - spider.piyao_ld_spider - INFO - 获取到内容长度: 2221
+2025-07-20 00:45:44,854 - spider.piyao_ld_spider - INFO - 正在爬取第 18/20 篇文章: 上门服务激活医保码？四川医保局：假的！
+2025-07-20 00:45:44,854 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/8eceaca4a2b74d608661d92611060df9/c.html
+2025-07-20 00:45:45,835 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/8eceaca4a2b74d608661d92611060df9/c.html, 状态码: 200
+2025-07-20 00:45:45,841 - spider.piyao_ld_spider - INFO - 获取到标题: 上门服务激活医保码？四川医保局：假的！
+2025-07-20 00:45:45,842 - spider.piyao_ld_spider - INFO - 获取到内容长度: 86
+2025-07-20 00:45:47,847 - spider.piyao_ld_spider - INFO - 正在爬取第 19/20 篇文章: 河南平顶山市教育体育局：这些信息都是假的！
+2025-07-20 00:45:47,847 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/5d2e664cb89b40d6b9ee8844d9b94550/c.html
+2025-07-20 00:45:48,796 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/5d2e664cb89b40d6b9ee8844d9b94550/c.html, 状态码: 200
+2025-07-20 00:45:48,802 - spider.piyao_ld_spider - INFO - 获取到标题: 河南平顶山市教育体育局：这些信息都是假的！
+2025-07-20 00:45:48,803 - spider.piyao_ld_spider - INFO - 获取到内容长度: 808
+2025-07-20 00:45:50,808 - spider.piyao_ld_spider - INFO - 正在爬取第 20/20 篇文章: 网传河南沁阳“八一水库淹死人了”系不实信息！
+2025-07-20 00:45:50,809 - spider.piyao_ld_spider - INFO - 正在请求页面: https://www.piyao.org.cn/20250711/c2557ac66cf24bd7bb0defb172a597ce/c.html
+2025-07-20 00:45:51,684 - spider.piyao_ld_spider - INFO - 页面请求成功: https://www.piyao.org.cn/20250711/c2557ac66cf24bd7bb0defb172a597ce/c.html, 状态码: 200
+2025-07-20 00:45:51,689 - spider.piyao_ld_spider - INFO - 获取到标题: 辟谣！网传河南沁阳“八一水库淹死人了”系不实信息！
+2025-07-20 00:45:51,690 - spider.piyao_ld_spider - INFO - 获取到内容长度: 361
+2025-07-20 00:45:53,696 - spider.piyao_ld_spider - INFO - 结果已保存到 piyao_ld_results.json
+2025-07-20 00:45:53,696 - spider.piyao_ld_spider - INFO - 摘要已保存到 piyao_ld_summary.json
+2025-07-20 00:45:53,696 - root - INFO - 成功爬取 20 篇文章
