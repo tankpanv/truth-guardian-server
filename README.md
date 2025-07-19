@@ -8,8 +8,8 @@ python send_message.py --all-users --now
 # python send_message.py  --now
 # 向指定用户推送
 #python send_message.py --username user1 --now
-
-
+# 清空数据，慎用
+# python scripts/clean_database.py --tables all --confirm
 
 # 向订阅用户推送（默认）
 #python send_message.py --now

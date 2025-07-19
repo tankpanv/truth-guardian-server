@@ -1,11 +1,12 @@
  
-python spider/piyao_spider.py 
+# python spider/piyao_spider.py 
+# 使用最新辟谣爬虫
 python run_piyao_ld_spider_full.py
 python scripts/import_piyao_ld_data.py
-python app/scraper/spiders/weibo_search.py
-python app/scripts/migrate_data.py 
-python send_message.py --username user1 --now --limit 5
-# python send_message.py  --now
+# python app/scraper/spiders/weibo_search.py
+# python app/scripts/migrate_data.py 
+# python send_message.py --username user1 --now --limit 5
+python send_message.py  --now
 # 向指定用户推送
 #python send_message.py --username user1 --now
 
