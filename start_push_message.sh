@@ -1,5 +1,7 @@
  
 python spider/piyao_spider.py 
+python run_piyao_ld_spider_full.py
+python scripts/import_piyao_ld_data.py
 python app/scraper/spiders/weibo_search.py
 python app/scripts/migrate_data.py 
 python send_message.py --username user1 --now --limit 5

@@ -61,3 +61,188 @@
 2025-07-15 02:06:36,942 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/bq/index.htm
 2025-07-15 02:08:37,042 - __main__ - ERROR - 获取页面失败: https://www.piyao.org.cn/bq/index.htm, 错误: HTTPConnectionPool(host='localhost', port=43973): Read timed out. (read timeout=120)
 2025-07-15 02:08:37,043 - __main__ - ERROR - 获取文章列表失败
+2025-07-19 23:36:58,739 - __main__ - INFO - 开始爬取辟谣网站
+2025-07-19 23:36:58,739 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/bq/index.htm
+2025-07-19 23:36:59,563 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/bq/index.htm, 状态码: 200
+2025-07-19 23:36:59,574 - __main__ - INFO - 找到 9 篇文章
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/xxjbrk.htm
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/pysjk/frontsql.htm
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/yybgt/index.htm
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章: 陕西警方公布10起打击整治网络谣言典型案例 - https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行 - https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章: 中央网信办举报中心持续开展网络辟谣标签工作 - https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动 - https://www.piyao.org.cn/2022-09/02/c_1211681756.htm
+2025-07-19 23:36:59,574 - __main__ - INFO - 解析到文章: 中央网信办深入开展网络辟谣标签工作 - https://www.piyao.org.cn/2022-09/29/c_1211689036.htm
+2025-07-19 23:36:59,575 - __main__ - INFO - 解析到文章: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动 - https://www.piyao.org.cn/2022-08/30/c_1211680529.htm
+2025-07-19 23:36:59,575 - __main__ - INFO - 正在爬取第 1/9 篇文章: 
+2025-07-19 23:36:59,575 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/xxjbrk.htm
+2025-07-19 23:37:01,527 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/xxjbrk.htm, 状态码: 200
+2025-07-19 23:37:01,537 - __main__ - INFO - 获取到标题: 在线提交
+2025-07-19 23:37:01,541 - __main__ - INFO - 获取到内容长度: 1083
+2025-07-19 23:37:03,545 - __main__ - INFO - 正在爬取第 2/9 篇文章: 
+2025-07-19 23:37:03,545 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/pysjk/frontsql.htm
+2025-07-19 23:37:04,277 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/pysjk/frontsql.htm, 状态码: 200
+2025-07-19 23:37:04,288 - __main__ - INFO - 获取到内容长度: 218
+2025-07-19 23:37:06,290 - __main__ - INFO - 正在爬取第 3/9 篇文章: 
+2025-07-19 23:37:06,290 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/yybgt/index.htm
+2025-07-19 23:37:07,206 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/yybgt/index.htm, 状态码: 200
+2025-07-19 23:37:07,219 - __main__ - INFO - 获取到标题: 12306能“在线换座”
+2025-07-19 23:37:09,230 - __main__ - INFO - 正在爬取第 4/9 篇文章: 陕西警方公布10起打击整治网络谣言典型案例
+2025-07-19 23:37:09,230 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html
+2025-07-19 23:37:10,945 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html, 状态码: 200
+2025-07-19 23:37:10,951 - __main__ - INFO - 获取到标题: 陕西警方公布10起打击整治网络谣言典型案例
+2025-07-19 23:37:10,954 - __main__ - INFO - 获取到内容长度: 1718
+2025-07-19 23:37:12,957 - __main__ - INFO - 正在爬取第 5/9 篇文章: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行
+2025-07-19 23:37:12,958 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html
+2025-07-19 23:37:14,470 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html, 状态码: 200
+2025-07-19 23:37:14,481 - __main__ - INFO - 获取到标题: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行
+2025-07-19 23:37:14,484 - __main__ - INFO - 获取到内容长度: 1692
+2025-07-19 23:37:16,487 - __main__ - INFO - 正在爬取第 6/9 篇文章: 中央网信办举报中心持续开展网络辟谣标签工作
+2025-07-19 23:37:16,487 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html
+2025-07-19 23:37:17,255 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html, 状态码: 200
+2025-07-19 23:37:17,262 - __main__ - INFO - 获取到标题: 中央网信办举报中心持续开展网络辟谣标签工作
+2025-07-19 23:37:17,264 - __main__ - INFO - 获取到内容长度: 803
+2025-07-19 23:37:19,268 - __main__ - INFO - 正在爬取第 7/9 篇文章: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动
+2025-07-19 23:37:19,268 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-09/02/c_1211681756.htm
+2025-07-19 23:37:20,117 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-09/02/c_1211681756.htm, 状态码: 200
+2025-07-19 23:37:20,123 - __main__ - INFO - 获取到标题: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动
+2025-07-19 23:37:20,127 - __main__ - INFO - 获取到内容长度: 7094
+2025-07-19 23:37:22,129 - __main__ - INFO - 正在爬取第 8/9 篇文章: 中央网信办深入开展网络辟谣标签工作
+2025-07-19 23:37:22,130 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-09/29/c_1211689036.htm
+2025-07-19 23:37:24,148 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-09/29/c_1211689036.htm, 状态码: 200
+2025-07-19 23:37:24,155 - __main__ - INFO - 获取到标题: 中央网信办深入开展网络辟谣标签工作
+2025-07-19 23:37:24,158 - __main__ - INFO - 获取到内容长度: 3966
+2025-07-19 23:37:26,162 - __main__ - INFO - 正在爬取第 9/9 篇文章: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动
+2025-07-19 23:37:26,162 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-08/30/c_1211680529.htm
+2025-07-19 23:37:27,388 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-08/30/c_1211680529.htm, 状态码: 200
+2025-07-19 23:37:27,395 - __main__ - INFO - 获取到标题: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动
+2025-07-19 23:37:27,398 - __main__ - INFO - 获取到内容长度: 2891
+2025-07-19 23:37:29,400 - __main__ - INFO - 结果已保存到 piyao_results.json
+2025-07-19 23:37:29,401 - root - INFO - 成功爬取 9 篇文章
+2025-07-19 23:43:00,542 - __main__ - INFO - 开始爬取辟谣网站
+2025-07-19 23:43:00,542 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/bq/index.htm
+2025-07-19 23:43:01,432 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/bq/index.htm, 状态码: 200
+2025-07-19 23:43:01,442 - __main__ - INFO - 找到 9 篇文章
+2025-07-19 23:43:01,442 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/xxjbrk.htm
+2025-07-19 23:43:01,442 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/pysjk/frontsql.htm
+2025-07-19 23:43:01,442 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/yybgt/index.htm
+2025-07-19 23:43:01,442 - __main__ - INFO - 解析到文章: 陕西警方公布10起打击整治网络谣言典型案例 - https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html
+2025-07-19 23:43:01,443 - __main__ - INFO - 解析到文章: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行 - https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html
+2025-07-19 23:43:01,443 - __main__ - INFO - 解析到文章: 中央网信办举报中心持续开展网络辟谣标签工作 - https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html
+2025-07-19 23:43:01,443 - __main__ - INFO - 解析到文章: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动 - https://www.piyao.org.cn/2022-09/02/c_1211681756.htm
+2025-07-19 23:43:01,443 - __main__ - INFO - 解析到文章: 中央网信办深入开展网络辟谣标签工作 - https://www.piyao.org.cn/2022-09/29/c_1211689036.htm
+2025-07-19 23:43:01,443 - __main__ - INFO - 解析到文章: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动 - https://www.piyao.org.cn/2022-08/30/c_1211680529.htm
+2025-07-19 23:43:01,443 - __main__ - INFO - 正在爬取第 1/9 篇文章: 
+2025-07-19 23:43:01,443 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/xxjbrk.htm
+2025-07-19 23:43:02,317 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/xxjbrk.htm, 状态码: 200
+2025-07-19 23:43:02,326 - __main__ - INFO - 获取到标题: 在线提交
+2025-07-19 23:43:02,330 - __main__ - INFO - 获取到内容长度: 1083
+2025-07-19 23:43:04,334 - __main__ - INFO - 正在爬取第 2/9 篇文章: 
+2025-07-19 23:43:04,334 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/pysjk/frontsql.htm
+2025-07-19 23:43:10,217 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/pysjk/frontsql.htm, 状态码: 200
+2025-07-19 23:43:10,228 - __main__ - INFO - 获取到内容长度: 218
+2025-07-19 23:43:12,231 - __main__ - INFO - 正在爬取第 3/9 篇文章: 
+2025-07-19 23:43:12,231 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/yybgt/index.htm
+2025-07-19 23:43:13,260 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/yybgt/index.htm, 状态码: 200
+2025-07-19 23:43:13,273 - __main__ - INFO - 获取到标题: 12306能“在线换座”
+2025-07-19 23:43:15,286 - __main__ - INFO - 正在爬取第 4/9 篇文章: 陕西警方公布10起打击整治网络谣言典型案例
+2025-07-19 23:43:15,287 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html
+2025-07-19 23:43:18,424 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html, 状态码: 200
+2025-07-19 23:43:18,432 - __main__ - INFO - 获取到标题: 陕西警方公布10起打击整治网络谣言典型案例
+2025-07-19 23:43:18,435 - __main__ - INFO - 获取到内容长度: 1718
+2025-07-19 23:43:20,438 - __main__ - INFO - 正在爬取第 5/9 篇文章: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行
+2025-07-19 23:43:20,439 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html
+2025-07-19 23:43:21,343 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html, 状态码: 200
+2025-07-19 23:43:21,355 - __main__ - INFO - 获取到标题: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行
+2025-07-19 23:43:21,359 - __main__ - INFO - 获取到内容长度: 1692
+2025-07-19 23:43:23,363 - __main__ - INFO - 正在爬取第 6/9 篇文章: 中央网信办举报中心持续开展网络辟谣标签工作
+2025-07-19 23:43:23,363 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html
+2025-07-19 23:43:29,231 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html, 状态码: 200
+2025-07-19 23:43:29,239 - __main__ - INFO - 获取到标题: 中央网信办举报中心持续开展网络辟谣标签工作
+2025-07-19 23:43:29,242 - __main__ - INFO - 获取到内容长度: 803
+2025-07-19 23:43:31,246 - __main__ - INFO - 正在爬取第 7/9 篇文章: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动
+2025-07-19 23:43:31,246 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-09/02/c_1211681756.htm
+2025-07-19 23:43:32,695 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-09/02/c_1211681756.htm, 状态码: 200
+2025-07-19 23:43:32,700 - __main__ - INFO - 获取到标题: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动
+2025-07-19 23:43:32,703 - __main__ - INFO - 获取到内容长度: 7094
+2025-07-19 23:43:34,706 - __main__ - INFO - 正在爬取第 8/9 篇文章: 中央网信办深入开展网络辟谣标签工作
+2025-07-19 23:43:34,707 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-09/29/c_1211689036.htm
+2025-07-19 23:43:35,637 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-09/29/c_1211689036.htm, 状态码: 200
+2025-07-19 23:43:35,644 - __main__ - INFO - 获取到标题: 中央网信办深入开展网络辟谣标签工作
+2025-07-19 23:43:35,647 - __main__ - INFO - 获取到内容长度: 3966
+2025-07-19 23:43:37,650 - __main__ - INFO - 正在爬取第 9/9 篇文章: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动
+2025-07-19 23:43:37,650 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-08/30/c_1211680529.htm
+2025-07-19 23:43:38,541 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-08/30/c_1211680529.htm, 状态码: 200
+2025-07-19 23:43:38,548 - __main__ - INFO - 获取到标题: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动
+2025-07-19 23:43:38,551 - __main__ - INFO - 获取到内容长度: 2891
+2025-07-19 23:43:40,555 - __main__ - INFO - 结果已保存到 piyao_results.json
+2025-07-19 23:43:40,555 - root - INFO - 成功爬取 9 篇文章
+2025-07-19 23:45:45,287 - __main__ - INFO - 登录成功
+2025-07-19 23:45:47,229 - __main__ - INFO - 开始爬取辟谣网站
+2025-07-19 23:45:47,229 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/bq/index.htm
+2025-07-19 23:47:17,516 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(104, 'Connection reset by peer')': /session/cf72ddd4b23f730d859c5a89dd15a982
+2025-07-19 23:47:17,517 - urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fae8a5925c0>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/cf72ddd4b23f730d859c5a89dd15a982
+2025-07-19 23:47:17,518 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fae8a593e80>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/cf72ddd4b23f730d859c5a89dd15a982
+2025-07-19 23:47:20,278 - __main__ - INFO - 开始爬取辟谣网站
+2025-07-19 23:47:20,278 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/ld.htm/bq/index.htm
+2025-07-19 23:47:21,417 - __main__ - ERROR - 请求失败: https://www.piyao.org.cn/ld.htm/bq/index.htm, 错误类型: HTTPError, 错误信息: 404 Client Error: Not Found for url: https://www.piyao.org.cn/ld.htm/bq/index.htm
+2025-07-19 23:47:21,418 - __main__ - ERROR - 获取文章列表失败
+2025-07-19 23:47:21,418 - root - ERROR - 爬取失败
+2025-07-20 00:09:25,342 - __main__ - INFO - 开始爬取辟谣网站
+2025-07-20 00:09:25,343 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/bq/index.htm
+2025-07-20 00:09:26,304 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/bq/index.htm, 状态码: 200
+2025-07-20 00:09:26,317 - __main__ - INFO - 找到 9 篇文章
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/xxjbrk.htm
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/pysjk/frontsql.htm
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章:  - https://www.piyao.org.cn/yybgt/index.htm
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章: 陕西警方公布10起打击整治网络谣言典型案例 - https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行 - https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章: 中央网信办举报中心持续开展网络辟谣标签工作 - https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动 - https://www.piyao.org.cn/2022-09/02/c_1211681756.htm
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章: 中央网信办深入开展网络辟谣标签工作 - https://www.piyao.org.cn/2022-09/29/c_1211689036.htm
+2025-07-20 00:09:26,317 - __main__ - INFO - 解析到文章: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动 - https://www.piyao.org.cn/2022-08/30/c_1211680529.htm
+2025-07-20 00:09:26,317 - __main__ - INFO - 正在爬取第 1/9 篇文章: 
+2025-07-20 00:09:26,317 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/xxjbrk.htm
+2025-07-20 00:09:27,417 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/xxjbrk.htm, 状态码: 200
+2025-07-20 00:09:27,426 - __main__ - INFO - 获取到标题: 在线提交
+2025-07-20 00:09:27,430 - __main__ - INFO - 获取到内容长度: 1083
+2025-07-20 00:09:29,434 - __main__ - INFO - 正在爬取第 2/9 篇文章: 
+2025-07-20 00:09:29,434 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/pysjk/frontsql.htm
+2025-07-20 00:09:30,226 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/pysjk/frontsql.htm, 状态码: 200
+2025-07-20 00:09:30,236 - __main__ - INFO - 获取到内容长度: 218
+2025-07-20 00:09:32,240 - __main__ - INFO - 正在爬取第 3/9 篇文章: 
+2025-07-20 00:09:32,240 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/yybgt/index.htm
+2025-07-20 00:09:43,888 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/yybgt/index.htm, 状态码: 200
+2025-07-20 00:09:43,901 - __main__ - INFO - 获取到标题: 12306能“在线换座”
+2025-07-20 00:09:45,914 - __main__ - INFO - 正在爬取第 4/9 篇文章: 陕西警方公布10起打击整治网络谣言典型案例
+2025-07-20 00:09:45,914 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html
+2025-07-20 00:09:47,504 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20240229/51cd3dc8160d4fa5862dd4fda74d019b/c.html, 状态码: 200
+2025-07-20 00:09:47,511 - __main__ - INFO - 获取到标题: 陕西警方公布10起打击整治网络谣言典型案例
+2025-07-20 00:09:47,514 - __main__ - INFO - 获取到内容长度: 1718
+2025-07-20 00:09:49,517 - __main__ - INFO - 正在爬取第 5/9 篇文章: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行
+2025-07-20 00:09:49,518 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html
+2025-07-20 00:09:50,530 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20240229/271817247b184f37a1aedbf913501da7/c.html, 状态码: 200
+2025-07-20 00:09:50,540 - __main__ - INFO - 获取到标题: 2023年度四川省雅安市网络辟谣工作总结会暨辟谣优秀作品颁奖仪式举行
+2025-07-20 00:09:50,544 - __main__ - INFO - 获取到内容长度: 1692
+2025-07-20 00:09:52,548 - __main__ - INFO - 正在爬取第 6/9 篇文章: 中央网信办举报中心持续开展网络辟谣标签工作
+2025-07-20 00:09:52,548 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html
+2025-07-20 00:09:53,375 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/20230128/3d1c1203c051450fa04380a749b4e399/c.html, 状态码: 200
+2025-07-20 00:09:53,382 - __main__ - INFO - 获取到标题: 中央网信办举报中心持续开展网络辟谣标签工作
+2025-07-20 00:09:53,384 - __main__ - INFO - 获取到内容长度: 803
+2025-07-20 00:09:55,386 - __main__ - INFO - 正在爬取第 7/9 篇文章: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动
+2025-07-20 00:09:55,386 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-09/02/c_1211681756.htm
+2025-07-20 00:09:56,375 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-09/02/c_1211681756.htm, 状态码: 200
+2025-07-20 00:09:56,381 - __main__ - INFO - 获取到标题: 中央网信办部署开展“清朗·打击网络谣言和虚假信息”专项行动
+2025-07-20 00:09:56,384 - __main__ - INFO - 获取到内容长度: 7094
+2025-07-20 00:09:58,388 - __main__ - INFO - 正在爬取第 8/9 篇文章: 中央网信办深入开展网络辟谣标签工作
+2025-07-20 00:09:58,388 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-09/29/c_1211689036.htm
+2025-07-20 00:09:59,451 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-09/29/c_1211689036.htm, 状态码: 200
+2025-07-20 00:09:59,457 - __main__ - INFO - 获取到标题: 中央网信办深入开展网络辟谣标签工作
+2025-07-20 00:09:59,461 - __main__ - INFO - 获取到内容长度: 3966
+2025-07-20 00:10:01,465 - __main__ - INFO - 正在爬取第 9/9 篇文章: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动
+2025-07-20 00:10:01,465 - __main__ - INFO - 正在请求页面: https://www.piyao.org.cn/2022-08/30/c_1211680529.htm
+2025-07-20 00:10:07,354 - __main__ - INFO - 页面请求成功: https://www.piyao.org.cn/2022-08/30/c_1211680529.htm, 状态码: 200
+2025-07-20 00:10:07,361 - __main__ - INFO - 获取到标题: 让网络谣言无处遁形 网络辟谣标签专项工作正式启动
+2025-07-20 00:10:07,364 - __main__ - INFO - 获取到内容长度: 2891
+2025-07-20 00:10:09,366 - __main__ - INFO - 结果已保存到 piyao_results.json
+2025-07-20 00:10:09,366 - root - INFO - 成功爬取 9 篇文章

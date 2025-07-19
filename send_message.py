@@ -53,7 +53,7 @@ def get_latest_debunk_articles(token, hours=2400):
         params = {
             'status': 'published',
             'page': 1,
-            'per_page': 10
+            'per_page': 50  # 增加每页返回数量，确保能获取到更多文章
         }
         
         response = requests.get(url, headers=headers, params=params)
@@ -71,13 +71,14 @@ def get_latest_debunk_articles(token, hours=2400):
             # 筛选最近n小时内的文章
             recent_articles = []
             for article in articles:
-                recent_articles.append(article)
                 try:
                     published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S')
                     if published_at >= start_time:
                         recent_articles.append(article)
                 except (ValueError, KeyError) as e:
                     logger.warning(f"处理文章日期时出错: {str(e)}")
+                    # 如果无法解析时间，也添加到结果中（兼容性处理）
+                    recent_articles.append(article)
                     continue
                     
             logger.info(f"找到{len(recent_articles)}篇最近{hours}小时内的辟谣文章")
@@ -171,12 +172,15 @@ def push_debunk_message(token, user_id, article):
         summary_text = summary_text.strip()
         if len(summary_text) > 100:
             summary_text = summary_text[:100] + "..."
-        
+        title = article['title']
+        if len(title) > 100:
+            title = title[:97] + "..."
+        content = article['title']
         data = {
             'receiver_id': int(user_id),  # 确保receiver_id是整数类型
-            'title': f"辟谣提醒: {article['title']}",
+            'title': title,
             'msg_type': 'text',
-            'content': f"{summary_text}\n\n点击查看详情: {API_CONFIG['base_url']}/debunk/articles/{article['id']}",
+            'content': content,
             'priority': 1
         }
         
