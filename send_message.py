@@ -173,7 +173,7 @@ def push_debunk_message(token, user_id, article):
             summary_text = summary_text[:100] + "..."
         
         data = {
-            'receiver_id': user_id,
+            'receiver_id': int(user_id),  # 确保receiver_id是整数类型
             'title': f"辟谣提醒: {article['title']}",
             'msg_type': 'text',
             'content': f"{summary_text}\n\n点击查看详情: {API_CONFIG['base_url']}/debunk/articles/{article['id']}",

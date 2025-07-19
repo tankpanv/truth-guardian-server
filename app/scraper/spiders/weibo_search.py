@@ -6,10 +6,63 @@ import sys
 import os
 import logging
 from urllib.parse import quote
+import re
+import html
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+def clean_html_text(text):
+    """
+    清理HTML文本，提取纯文本内容
+    保留标点符号，去除HTML标签和特殊字符
+    
+    Args:
+        text (str): 包含HTML标签的文本
+        
+    Returns:
+        str: 清理后的纯文本
+    """
+    if not text:
+        return ""
+    
+    # 解码HTML实体（如 &lt; &gt; &amp; &quot; &#x等）
+    text = html.unescape(text)
+    
+    # 移除HTML标签，但保留标签内的文本内容
+    # 匹配 <标签名 属性> 和 </标签名> 格式
+    text = re.sub(r'<[^>]+>', '', text)
+    
+    # 处理常见的微博特殊标记
+    # 移除 @用户名 的链接格式，但保留用户名
+    text = re.sub(r'<a[^>]*>@([^<]+)</a>', r'@\1', text)
+    
+    # 移除话题链接格式，但保留话题内容  
+    text = re.sub(r'<a[^>]*>#([^<]+)#</a>', r'#\1#', text)
+    
+    # 移除链接，但保留链接文本
+    text = re.sub(r'<a[^>]*>([^<]+)</a>', r'\1', text)
+    
+    # 移除图片标签
+    text = re.sub(r'<img[^>]*/?>', '', text)
+    
+    # 移除视频标签
+    text = re.sub(r'<video[^>]*>.*?</video>', '', text, flags=re.DOTALL)
+    
+    # 移除换行符周围的多余空格
+    text = re.sub(r'\s*\n\s*', '\n', text)
+    
+    # 将多个连续空格替换为单个空格
+    text = re.sub(r' +', ' ', text)
+    
+    # 移除行首行尾空格
+    text = text.strip()
+    
+    # 移除多余的换行符（超过2个连续换行符替换为2个）
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    
+    return text
 # https://m.weibo.cn/search?containerid=100103type%3D1%26q%3D%E8%BE%9F%E8%B0%A3
 # https://m.weibo.cn/api/container/getIndex?containerid=100103type%3D1%26q%3D%E8%BE%9F%E8%B0%A3&page_type=searchall
 # API配置
@@ -203,9 +256,12 @@ class WeiboSearchSpider:
                     except:
                         created_at = datetime.now()
                 
+                # 清理微博内容文本
+                content = clean_html_text(mblog.get('text', ''))
+                
                 # 构建微博数据
                 weibo_data = {
-                    'content': mblog.get('text', ''),
+                    'content': content,
                     'weibo_mid_id': str(mblog.get('mid', '')),
                     'weibo_user_id': str(mblog.get('user', {}).get('id', '')),
                     'weibo_user_name': mblog.get('user', {}).get('screen_name', ''),
